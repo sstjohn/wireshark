@@ -3,7 +3,7 @@
  *
  * Copyright 2011, Florian Fainelli <florian[AT]openwrt.org>
  *
- * $Id$
+ * $Id: packet-homeplug-av.c 45017 2012-09-20 02:03:38Z morriss $
  *
  * Wireshark - Network traffic analyzer
  * By Gerald Combs <gerald[AT]wireshark.org>
@@ -48,6 +48,24 @@ static int hf_homeplug_av_bcn_bto_0              = -1;
 static int hf_homeplug_av_bcn_bto_1              = -1;
 static int hf_homeplug_av_bcn_bto_2              = -1;
 static int hf_homeplug_av_bcn_bto_3              = -1;
+static int hf_homeplug_av_bcn_nid_and_hm	 = -1;
+static int hf_homeplug_av_bcn_stei		 = -1;
+static int hf_homeplug_av_bcn_bt		 = -1;
+static int hf_homeplug_av_bcn_ucnr		 = -1;
+static int hf_homeplug_av_bcn_npsm		 = -1;
+static int hf_homeplug_av_bcn_num_slots		 = -1;
+static int hf_homeplug_av_bcn_slot_usage	 = -1;
+static int hf_homeplug_av_bcn_slot_id			 = -1;
+static int hf_homeplug_av_bcn_aclss			 = -1;
+static int hf_homeplug_av_bcn_hoip			 = -1;
+static int hf_homeplug_av_bcn_rtsbf			 = -1;
+static int hf_homeplug_av_bcn_nm			 = -1;
+static int hf_homeplug_av_bcn_bm_cap			 = -1;
+static int hf_homeplug_av_bcn_rsf			 = -1;
+static int hf_homeplug_av_bcn_p_level			 = -1;
+static int hf_homeplug_av_bcn_bmi			 = -1;
+static int hf_homeplug_av_bcn_opad			 = -1;
+static int hf_homeplug_av_bcn_bpcs			 = -1;
 
 /* Frame Control */
 static int hf_homeplug_av_fc                     = -1;
@@ -66,15 +84,20 @@ static int hf_homeplug_av_fc_tmi_av              = -1;
 static int hf_homeplug_av_fc_fl_av               = -1;
 static int hf_homeplug_av_fc_mpdu_cnt            = -1;
 static int hf_homeplug_av_fc_burst_cnt           = -1;
+static int hf_homeplug_av_fc_bbf		 = -1;
+static int hf_homeplug_av_fc_mrtfl		 = -1;
 static int hf_homeplug_av_fc_clst                = -1;
 static int hf_homeplug_av_fc_rg_len              = -1;
 static int hf_homeplug_av_fc_mfs_cmd_mgmt        = -1;
 static int hf_homeplug_av_fc_mfs_cmd_data        = -1;
+static int hf_homeplug_av_fc_mfs_rsp_mgmt	 = -1;
+static int hf_homeplug_av_fc_mfs_rsp_data	 = -1;
+static int hf_homeplug_av_fc_bm_sacki		 = -1;
 static int hf_homeplug_av_fc_rsr                 = -1;
 static int hf_homeplug_av_fc_mcf                 = -1;
-static int hf_homeplug_av_fc_dccpcf              = -1;
+static int hf_homeplug_av_fc_dcppcf              = -1;
 static int hf_homeplug_av_fc_mnbf                = -1;
-
+static int hf_homeplug_av_fc_mst		 = -1;
 
 /* Public MMEs */
 static int hf_homeplug_av_public                 = -1;
@@ -635,7 +658,7 @@ static const value_string homeplug_av_mmtype_vals[] = {
 static value_string_ext homeplug_av_mmtype_vals_ext = VALUE_STRING_EXT_INIT(homeplug_av_mmtype_vals);
 
 /* Versions */
-#define HOMEPLUG_AV_MMVER_MASK			0x01
+#define HOMEPLUG_AV_MMVER_MASK			0xFF
 
 static const value_string homeplug_av_mmver_vals[] = {
     { 0x00, "1.0" },
@@ -662,7 +685,7 @@ static const value_string homeplug_av_mmtype_lsb_vals[] = {
 #define HOMEPLUG_AV_MMTYPE_MSB_MANUF		0x04
 #define HOMEPLUG_AV_MMTYPE_MSB_VENDOR		0x05
 #define HOMEPLUG_AV_MMTYPE_MSB_RSV		0x06
-#define HOMEPLUG_AV_MMTYPE_MSB_MASK		0x06
+#define HOMEPLUG_AV_MMTYPE_MSB_MASK		0xE000
 #define HOMEPLUG_AV_MMTYPE_MSB_SHIFT		(5)
 
 static const value_string homeplug_av_mmtype_msb_vals[] = {
@@ -724,7 +747,7 @@ static const value_string homeplug_av_nw_info_role_vals[] = {
    { 0, NULL }
 };
 
-#define HOMEPLUG_AV_NW_INFO_NID_MASK	0x01
+#define HOMEPLUG_AV_NW_INFO_NID_MASK	0x08
 
 static const value_string homeplug_nw_info_access_vals[] = {
    { 0x00, "In-home" },
@@ -732,7 +755,7 @@ static const value_string homeplug_nw_info_access_vals[] = {
    { 0, NULL }
 };
 
-#define HOMEPLUG_AV_PEKS_MASK		0x0F
+#define HOMEPLUG_AV_PEKS_MASK		0xF0
 
 static const value_string homeplug_av_peks_vals[] = {
    { 0x00, "Destination STA's DAK" },
@@ -1125,8 +1148,8 @@ dissect_homeplug_av_mmhdr(ptvcursor_t *cursor)
 
       ptvcursor_push_subtree(cursor, ti_mmtype, ett_homeplug_av_mmtype);
       {
-         ptvcursor_add(cursor, hf_homeplug_av_mmhdr_mmtype_lsb, 1, ENC_BIG_ENDIAN);
-         ptvcursor_add(cursor, hf_homeplug_av_mmhdr_mmtype_msb, 1, ENC_BIG_ENDIAN);
+         ptvcursor_add_no_advance(cursor, hf_homeplug_av_mmhdr_mmtype_lsb, 2, ENC_LITTLE_ENDIAN);
+         ptvcursor_add(cursor, hf_homeplug_av_mmhdr_mmtype_msb, 2, ENC_LITTLE_ENDIAN);
       }
       ptvcursor_pop_subtree(cursor);
    }
@@ -1158,7 +1181,8 @@ dissect_homeplug_av_mmhdr(ptvcursor_t *cursor)
    return homeplug_av_mmtype;
 }
 
-/* Beacon body */
+/*
+// Beacon body
 static void
 dissect_homeplug_av_beacon(ptvcursor_t *cursor)
 {
@@ -1183,7 +1207,7 @@ dissect_homeplug_av_beacon(ptvcursor_t *cursor)
    }
    ptvcursor_pop_subtree(cursor);
 }
-
+*/
 /* Frame control */
 static void
 dissect_homeplug_av_frame_control(ptvcursor_t *cursor)
@@ -1197,9 +1221,50 @@ dissect_homeplug_av_frame_control(ptvcursor_t *cursor)
 
    ptvcursor_push_subtree(cursor, it, ett_homeplug_av_fc);
    {
+      guint8 del = tvb_get_guint8(ptvcursor_tvbuff(cursor), ptvcursor_current_offset(cursor)); 
       ptvcursor_add_no_advance(cursor, hf_homeplug_av_nw_info_del_type, 1, ENC_BIG_ENDIAN);
       ptvcursor_add_no_advance(cursor, hf_homeplug_av_nw_info_access, 1, ENC_BIG_ENDIAN);
       ptvcursor_add(cursor, hf_homeplug_av_nw_info_snid, 1, ENC_BIG_ENDIAN);
+
+      switch(del & 0x7) {
+	case 0: //beacon
+      ptvcursor_add(cursor, hf_homeplug_av_bcn_bts, 4, ENC_LITTLE_ENDIAN);
+      ptvcursor_add(cursor, hf_homeplug_av_bcn_bto_0, 2, ENC_LITTLE_ENDIAN);
+      ptvcursor_add(cursor, hf_homeplug_av_bcn_bto_1, 2, ENC_LITTLE_ENDIAN);
+      ptvcursor_add(cursor, hf_homeplug_av_bcn_bto_2, 2, ENC_LITTLE_ENDIAN);
+      ptvcursor_add(cursor, hf_homeplug_av_bcn_bto_3, 2, ENC_LITTLE_ENDIAN);
+      ptvcursor_add(cursor, hf_homeplug_av_nw_info_fccs_av, 3, ENC_NA);
+	ptvcursor_add(cursor, hf_homeplug_av_bcn_nid_and_hm, 7, ENC_NA);
+	ptvcursor_add(cursor, hf_homeplug_av_bcn_stei, 
+					1, ENC_LITTLE_ENDIAN);
+	ptvcursor_add_no_advance(cursor, hf_homeplug_av_bcn_bt, 
+					1, ENC_LITTLE_ENDIAN);
+	ptvcursor_add_no_advance(cursor, hf_homeplug_av_bcn_ucnr, 
+					1, ENC_LITTLE_ENDIAN);
+	ptvcursor_add_no_advance(cursor, hf_homeplug_av_bcn_npsm, 
+					1, ENC_LITTLE_ENDIAN);
+	ptvcursor_add(cursor, hf_homeplug_av_bcn_num_slots, 
+					1, ENC_LITTLE_ENDIAN);
+	ptvcursor_add(cursor, hf_homeplug_av_bcn_slot_usage, 
+					1, ENC_LITTLE_ENDIAN);
+	ptvcursor_add_no_advance(cursor, hf_homeplug_av_bcn_slot_id, 
+					1, ENC_LITTLE_ENDIAN);
+	ptvcursor_add_no_advance(cursor, hf_homeplug_av_bcn_aclss, 
+					1, ENC_LITTLE_ENDIAN);
+	ptvcursor_add_no_advance(cursor, hf_homeplug_av_bcn_hoip, 
+					1, ENC_LITTLE_ENDIAN);
+	ptvcursor_add(cursor, hf_homeplug_av_bcn_rtsbf, 
+					1, ENC_LITTLE_ENDIAN);
+	ptvcursor_add_no_advance(cursor, hf_homeplug_av_bcn_nm, 
+					1, ENC_LITTLE_ENDIAN);
+	ptvcursor_add_no_advance(cursor, hf_homeplug_av_bcn_bm_cap, 
+					1, ENC_LITTLE_ENDIAN);
+	ptvcursor_add_no_advance(cursor, hf_homeplug_av_bcn_rsf, 
+					1, ENC_LITTLE_ENDIAN);
+	ptvcursor_add(cursor, hf_homeplug_av_bcn_p_level, 
+					1, ENC_LITTLE_ENDIAN);
+	break;
+	case 1: //start of frame
       ptvcursor_add(cursor, hf_homeplug_av_fc_stei, 1, ENC_BIG_ENDIAN);
       ptvcursor_add(cursor, hf_homeplug_av_fc_dtei, 1, ENC_BIG_ENDIAN);
       ptvcursor_add(cursor, hf_homeplug_av_fc_lid, 1, ENC_BIG_ENDIAN);
@@ -1213,19 +1278,31 @@ dissect_homeplug_av_frame_control(ptvcursor_t *cursor)
       ptvcursor_add_no_advance(cursor, hf_homeplug_av_fc_pbsz, 1, ENC_BIG_ENDIAN);
       ptvcursor_add_no_advance(cursor, hf_homeplug_av_fc_num_sym, 1, ENC_BIG_ENDIAN);
       ptvcursor_add(cursor, hf_homeplug_av_fc_tmi_av, 1, ENC_BIG_ENDIAN);
+      ptvcursor_add_no_advance(cursor, hf_homeplug_av_fc_fl_av, 2, ENC_LITTLE_ENDIAN);
       ptvcursor_add_no_advance(cursor, hf_homeplug_av_fc_mpdu_cnt, 2, ENC_BIG_ENDIAN);
-      ptvcursor_add_no_advance(cursor, hf_homeplug_av_fc_burst_cnt, 2, ENC_BIG_ENDIAN);
-      ptvcursor_add(cursor, hf_homeplug_av_fc_fl_av, 2, ENC_LITTLE_ENDIAN);
-      ptvcursor_add_no_advance(cursor, hf_homeplug_av_fc_clst, 1, ENC_BIG_ENDIAN);
-      ptvcursor_add(cursor, hf_homeplug_av_fc_rg_len, 1, ENC_BIG_ENDIAN);
-      ptvcursor_add_no_advance(cursor, hf_homeplug_av_fc_mfs_cmd_mgmt, 1, ENC_BIG_ENDIAN);
-      ptvcursor_add_no_advance(cursor, hf_homeplug_av_fc_mfs_cmd_data, 1, ENC_BIG_ENDIAN);
-      ptvcursor_add(cursor, hf_homeplug_av_fc_rsr, 1, ENC_BIG_ENDIAN);
+      ptvcursor_add(cursor, hf_homeplug_av_fc_burst_cnt, 2, ENC_BIG_ENDIAN);
+      ptvcursor_add_no_advance(cursor, hf_homeplug_av_fc_bbf, 1, ENC_BIG_ENDIAN);
+      ptvcursor_add_no_advance(cursor, hf_homeplug_av_fc_mrtfl, 1, ENC_BIG_ENDIAN);
+      ptvcursor_add_no_advance(cursor, hf_homeplug_av_fc_dcppcf, 1, ENC_BIG_ENDIAN);
       ptvcursor_add_no_advance(cursor, hf_homeplug_av_fc_mcf, 1, ENC_BIG_ENDIAN);
-      ptvcursor_add_no_advance(cursor, hf_homeplug_av_fc_dccpcf, 1, ENC_BIG_ENDIAN);
-      ptvcursor_add_no_advance(cursor, hf_homeplug_av_fc_mnbf, 1, ENC_BIG_ENDIAN);
-      ptvcursor_add(cursor, hf_homeplug_av_reserved, 1, ENC_NA);
+      ptvcursor_add(cursor, hf_homeplug_av_fc_mnbf, 1, ENC_BIG_ENDIAN);
+      ptvcursor_add_no_advance(cursor, hf_homeplug_av_fc_rsr, 1, ENC_BIG_ENDIAN);
+      ptvcursor_add_no_advance(cursor, hf_homeplug_av_fc_mst, 1, ENC_BIG_ENDIAN);
+      ptvcursor_add_no_advance(cursor, hf_homeplug_av_fc_mfs_cmd_mgmt, 1, ENC_BIG_ENDIAN);
+      ptvcursor_add(cursor, hf_homeplug_av_fc_mfs_cmd_data, 1, ENC_BIG_ENDIAN);
+      ptvcursor_add_no_advance(cursor, hf_homeplug_av_fc_mfs_rsp_mgmt, 1, ENC_BIG_ENDIAN);
+      ptvcursor_add_no_advance(cursor, hf_homeplug_av_fc_mfs_rsp_data, 1, ENC_BIG_ENDIAN);
+      ptvcursor_add(cursor, hf_homeplug_av_fc_bm_sacki, 1, ENC_BIG_ENDIAN);
       ptvcursor_add(cursor, hf_homeplug_av_nw_info_fccs_av, 3, ENC_NA);
+     	break; 
+	case 2: //selective acknowledgment
+	case 3: //request to send/clear to send
+	case 4: //sound
+	case 5: //reverse start of frame
+	case 6: //reserved
+	case 7: //reserved
+	default: break;
+      }	
    }
    ptvcursor_pop_subtree(cursor);
 }
@@ -2160,7 +2237,6 @@ dissect_homeplug_av_sniffer_ind(ptvcursor_t *cursor)
          ptvcursor_add(cursor, hf_homeplug_av_sniffer_data_systime, 8, ENC_LITTLE_ENDIAN);
          ptvcursor_add(cursor, hf_homeplug_av_sniffer_data_bc_time, 4, ENC_LITTLE_ENDIAN);
          dissect_homeplug_av_frame_control(cursor);
-         dissect_homeplug_av_beacon(cursor);
       }
       ptvcursor_pop_subtree(cursor);
    }
@@ -2905,11 +2981,11 @@ proto_register_homeplug_av(void)
       },
       { &hf_homeplug_av_mmhdr_mmtype_lsb,
         { "LSB", "homeplug_av.mmhdr.mmtype.lsb",
-	  FT_UINT8, BASE_HEX, VALS(homeplug_av_mmtype_lsb_vals), HOMEPLUG_AV_MMTYPE_LSB_MASK, NULL, HFILL }
+	  FT_UINT16, BASE_HEX, VALS(homeplug_av_mmtype_lsb_vals), HOMEPLUG_AV_MMTYPE_LSB_MASK, NULL, HFILL }
       },
       { &hf_homeplug_av_mmhdr_mmtype_msb,
         { "MSB", "homeplug_av.mmhdr.mmtype.msb",
-	  FT_UINT8, BASE_HEX, VALS(homeplug_av_mmtype_msb_vals), HOMEPLUG_AV_MMTYPE_MSB_MASK, "Reserved", HFILL },
+	  FT_UINT16, BASE_HEX, VALS(homeplug_av_mmtype_msb_vals), HOMEPLUG_AV_MMTYPE_MSB_MASK, "Reserved", HFILL },
       },
       /* Public MME */
       { &hf_homeplug_av_public,
@@ -2987,43 +3063,67 @@ proto_register_homeplug_av(void)
       },
       { &hf_homeplug_av_fc_mpdu_cnt,
         { "MPDU count", "homeplug_av.fc.mpdu_cnt",
-	  FT_UINT8, BASE_DEC, NULL, 0x3000, NULL, HFILL }
+	  FT_UINT16, BASE_DEC, NULL, 0x3000, NULL, HFILL }
       },
       { &hf_homeplug_av_fc_burst_cnt,
         { "Burst count", "homeplug_av.fc.burst_cnt",
-	  FT_UINT8, BASE_DEC, NULL, 0xC000, NULL, HFILL }
+	  FT_UINT16, BASE_DEC, NULL, 0xC000, NULL, HFILL }
+      },
+      { &hf_homeplug_av_fc_bbf,
+	{ "Bidirectional Burst Flag", "homeplug_av.fc.bbf",
+	  FT_BOOLEAN, 8, NULL, 1, NULL, HFILL }
+      },
+      { &hf_homeplug_av_fc_mrtfl,
+        { "Max Reverse Transmission Frame Length", "homeplug_av.fc.mrtfl",
+	  FT_UINT8, BASE_DEC, NULL, 0x1E, NULL, HFILL }
       },
       { &hf_homeplug_av_fc_clst,
         { "Convergence layer SAP type", "homeplug_av.fc.clst",
-	  FT_UINT8, BASE_HEX, NULL, 0x07, NULL, HFILL }
+	  FT_UINT16, BASE_HEX, NULL, 0x07, NULL, HFILL }
       },
       { &hf_homeplug_av_fc_rg_len,
         { "Reverse grant length", "homeplug_av.fc.rg_len",
-	  FT_UINT8, BASE_DEC, NULL, 0x3F, NULL, HFILL }
+	  FT_UINT16, BASE_DEC, NULL, 0x1F8, NULL, HFILL }
       },
       { &hf_homeplug_av_fc_mfs_cmd_mgmt,
         { "Management MAC frame stream command", "homeplug_av.fc.mfs_cmd_mgmt",
-	  FT_UINT8, BASE_DEC, NULL, 0x0E, NULL, HFILL }
+	  FT_UINT8, BASE_DEC, NULL, 0x1C, NULL, HFILL }
       },
       { &hf_homeplug_av_fc_mfs_cmd_data,
-        { "Data MAC frame stream command", "homeplug_av.fc.mfs_data_mgmt",
-	  FT_UINT8, BASE_DEC, NULL, 0x70, NULL, HFILL }
+        { "Data MAC frame stream command", "homeplug_av.fc.mfs_cmd_data",
+	  FT_UINT8, BASE_DEC, NULL, 0xE0, NULL, HFILL }
+      },
+      { &hf_homeplug_av_fc_mfs_rsp_mgmt,
+	{ "Management MAC frame stream response", "homeplug_av.fc.mfs_rsp_mgmt",
+	  FT_UINT8, BASE_DEC, NULL, 0x03, NULL, HFILL }
+      },
+      { &hf_homeplug_av_fc_mfs_rsp_data,
+	{ "Data MAC frame stream response", "homeplug_av.fc.mfs_rsp_data",
+	  FT_UINT8, BASE_DEC, NULL, 0x0C, NULL, HFILL }
+      },
+      { &hf_homeplug_av_fc_bm_sacki,
+	{ " Bit map SACK info", "homeplug_av.fc.bm_sacki",
+	  FT_UINT8, BASE_DEC, NULL, 0xF0, NULL, HFILL }
       },
       { &hf_homeplug_av_fc_rsr,
-        { "Request SACK transmission", "homeplug_av.fc.rsr",
-	  FT_BOOLEAN, 8, NULL, 0x80, NULL, HFILL }
+	{ "Request SACK retransmission", "homeplug_av.fc.rsr",	  
+	  FT_BOOLEAN, 8, NULL, 0x1,  NULL, HFILL }
+      },
+      { &hf_homeplug_av_fc_mst,
+	{ "MAC SAP type", "homeplug_av.fc.mst",
+	  FT_BOOLEAN, 8, NULL, 0x02, NULL, HFILL }
       },
       { &hf_homeplug_av_fc_mcf,
         { "Multicast", "homeplug_av.fc.mcf",
-	  FT_BOOLEAN, 8, NULL, 0x01, NULL, HFILL }
+	  FT_BOOLEAN, 8, NULL, 0x40, NULL, HFILL }
       },
-      { &hf_homeplug_av_fc_dccpcf,
-        { "Different CP PHY clock", "homeplug_av.fc.dccpcf",
-	  FT_BOOLEAN, 8, NULL, 0x02, NULL, HFILL }
+      { &hf_homeplug_av_fc_dcppcf,
+        { "Different CP PHY clock", "homeplug_av.fc.dcppcf",
+	  FT_BOOLEAN, 8, NULL, 0x20, NULL, HFILL }
       },
       { &hf_homeplug_av_fc_mnbf,
         { "Multinetwork broadcast", "homeplug_av.fc.mnbf",
-	  FT_BOOLEAN, 8, NULL, 0x04, NULL, HFILL }
+	  FT_BOOLEAN, 8, NULL, 0x80, NULL, HFILL }
       },
       /* Beacon body */
       { &hf_homeplug_av_bcn,
@@ -3050,7 +3150,97 @@ proto_register_homeplug_av(void)
         { "Beacon transmission offset 3", "homeplug_av.bcn.bto_3",
 	  FT_UINT16, BASE_HEX, NULL, 0x00, NULL, HFILL }
       },
-      /* Central Coordination Discovery List Confirmation */
+	{ &hf_homeplug_av_bcn_nid_and_hm,
+		{ "Network Identifier and Hybrid Mode",
+		  "homeplug_av.bcn.nid_and_hm",
+		  FT_BYTES, BASE_NONE, NULL, 0x00, NULL, HFILL }
+	},
+	{ &hf_homeplug_av_bcn_stei,
+		{ "Source terminal equipment identifier",
+		  "homeplug_av.bcn.stei",
+		  FT_UINT8, BASE_HEX, NULL, 0x00, NULL, HFILL }
+	},
+	{ &hf_homeplug_av_bcn_bt,
+		{ "Beacon type",
+		  "homeplug_av.bcn.bt",
+		  FT_UINT8, BASE_HEX, NULL, 0x07, NULL, HFILL }
+	},
+	{ &hf_homeplug_av_bcn_ucnr,
+		{ "Uncoordinated Networks Reported",
+		  "homeplug_av.bcn.ucnr",
+		  FT_BOOLEAN, 8, NULL, 0x08, NULL, HFILL }
+	},
+	{ &hf_homeplug_av_bcn_npsm,
+		{ "Network power saving mode",
+		  "homeplug_av.bcn.npsm",
+		  FT_BOOLEAN, 8, NULL, 0x10, NULL, HFILL }
+	},
+	{ &hf_homeplug_av_bcn_num_slots,
+		{ "Number of Beacon Slots",
+		  "homeplug_av.bcn.num_slots",
+		  FT_UINT8, BASE_HEX, NULL, 0xC0, NULL, HFILL }
+	},
+	{ &hf_homeplug_av_bcn_slot_usage,
+		{ "Beacon Slot Usage",
+		  "homeplug_av.bcn.slot_usage",
+		  FT_UINT8, BASE_HEX, NULL, 0x00, NULL, HFILL }
+	},
+	{ &hf_homeplug_av_bcn_slot_id,
+		{ "Beacon Slot ID",
+		  "homeplug_av.bcn.slot_id",
+		  FT_UINT8, BASE_HEX, NULL, 0x07, NULL, HFILL }
+	},
+	{ &hf_homeplug_av_bcn_aclss,
+		{ "AC Line Cycle Synchronization Status",
+		  "homeplug_av.bcn.aclss",
+		  FT_UINT8, BASE_HEX, NULL, 0x38, NULL, HFILL }
+	},
+	{ &hf_homeplug_av_bcn_hoip,
+		{ "Handover-In-Progress",
+		  "homeplug_av.bcn.hoip",
+		  FT_BOOLEAN, 8, NULL, 0x40, NULL, HFILL }
+	},
+	{ &hf_homeplug_av_bcn_rtsbf,
+		{ "RTS Broadcast Flag",
+		  "homeplug_av.bcn.rtsbf",
+		  FT_BOOLEAN, 8, NULL, 0x80, NULL, HFILL }
+	},
+	{ &hf_homeplug_av_bcn_nm,
+		{ "Network Mode",
+		  "homeplug_av.bcn.nm",
+		  FT_UINT8, BASE_HEX, NULL, 0x03, NULL, HFILL }
+	},
+	{ &hf_homeplug_av_bcn_bm_cap,
+		{ "BM Capability",
+		  "homeplug_av.bcn.bm_cap",
+		  FT_UINT8, BASE_HEX, NULL, 0x0C, NULL, HFILL }
+	},
+	{ &hf_homeplug_av_bcn_rsf,
+		{ "Reusable SNID Flag",
+		  "homeplug_av.bcn.rsf",
+		  FT_BOOLEAN, 8, NULL, 0x10, NULL, HFILL }
+	},
+	{ &hf_homeplug_av_bcn_p_level,
+		{ "Proxy Level",
+		  "homeplug_av.bcn.plevel",
+		  FT_UINT8, BASE_HEX, NULL, 0xE0, NULL, HFILL }
+	},
+	{ &hf_homeplug_av_bcn_bmi,
+		{ "Beacon Management Information",
+		  "homeplug_av.bcn.bmi",
+		  FT_BYTES, BASE_NONE, NULL, 0x00, NULL, HFILL }
+	},
+	{ &hf_homeplug_av_bcn_opad,
+		{ "Octet Pad",
+		  "homeplug_av.bcn.nid_and_hm",
+		  FT_BYTES, BASE_NONE, NULL, 0x00, NULL, HFILL }
+	},
+	{ &hf_homeplug_av_bcn_bpcs,
+		{ "Beacon Payload Check Sequence",
+		  "homeplug_av.bcn.bpcs",
+		  FT_UINT32, BASE_HEX, NULL, 0x00, NULL, HFILL }
+	},
+      /* Central Cooeurdination Discovery List Confirmation */
       { &hf_homeplug_av_cc_disc_list_cnf,
         { "Central Coordination Discovery List Confirmation", "homeplug_av.cc_disc_list_cnf",
 	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
@@ -3707,7 +3897,7 @@ proto_register_homeplug_av(void)
       },
       { &hf_homeplug_av_nw_info_snid,
         { "Short Network ID", "homeplug_av.nw_info.snid",
-	  FT_UINT8, BASE_HEX, NULL, 0x00, NULL, HFILL }
+	  FT_UINT8, BASE_HEX, NULL, 0xF0, NULL, HFILL }
       },
       { &hf_homeplug_av_nw_info_tei,
         { "Terminal Equipement Identifer", "homeplug_av.nw_info.tei",
