@@ -48,24 +48,24 @@ static int hf_homeplug_av_bcn_bto_0              = -1;
 static int hf_homeplug_av_bcn_bto_1              = -1;
 static int hf_homeplug_av_bcn_bto_2              = -1;
 static int hf_homeplug_av_bcn_bto_3              = -1;
-static int hf_homeplug_av_bcn_nid_and_hm	 = -1;
-static int hf_homeplug_av_bcn_stei		 = -1;
-static int hf_homeplug_av_bcn_bt		 = -1;
-static int hf_homeplug_av_bcn_ucnr		 = -1;
-static int hf_homeplug_av_bcn_npsm		 = -1;
-static int hf_homeplug_av_bcn_num_slots		 = -1;
-static int hf_homeplug_av_bcn_slot_usage	 = -1;
-static int hf_homeplug_av_bcn_slot_id			 = -1;
-static int hf_homeplug_av_bcn_aclss			 = -1;
-static int hf_homeplug_av_bcn_hoip			 = -1;
-static int hf_homeplug_av_bcn_rtsbf			 = -1;
-static int hf_homeplug_av_bcn_nm			 = -1;
-static int hf_homeplug_av_bcn_bm_cap			 = -1;
-static int hf_homeplug_av_bcn_rsf			 = -1;
-static int hf_homeplug_av_bcn_p_level			 = -1;
-static int hf_homeplug_av_bcn_bmi			 = -1;
-static int hf_homeplug_av_bcn_opad			 = -1;
-static int hf_homeplug_av_bcn_bpcs			 = -1;
+static int hf_homeplug_av_bcn_nid_and_hm         = -1;
+static int hf_homeplug_av_bcn_stei               = -1;
+static int hf_homeplug_av_bcn_bt                 = -1;
+static int hf_homeplug_av_bcn_ucnr               = -1;
+static int hf_homeplug_av_bcn_npsm               = -1;
+static int hf_homeplug_av_bcn_num_slots          = -1;
+static int hf_homeplug_av_bcn_slot_usage         = -1;
+static int hf_homeplug_av_bcn_slot_id                    = -1;
+static int hf_homeplug_av_bcn_aclss                      = -1;
+static int hf_homeplug_av_bcn_hoip                       = -1;
+static int hf_homeplug_av_bcn_rtsbf                      = -1;
+static int hf_homeplug_av_bcn_nm                         = -1;
+static int hf_homeplug_av_bcn_bm_cap                     = -1;
+static int hf_homeplug_av_bcn_rsf                        = -1;
+static int hf_homeplug_av_bcn_p_level                    = -1;
+static int hf_homeplug_av_bcn_bmi                        = -1;
+static int hf_homeplug_av_bcn_opad                       = -1;
+static int hf_homeplug_av_bcn_bpcs                       = -1;
 
 /* Frame Control */
 static int hf_homeplug_av_fc                     = -1;
@@ -84,20 +84,20 @@ static int hf_homeplug_av_fc_tmi_av              = -1;
 static int hf_homeplug_av_fc_fl_av               = -1;
 static int hf_homeplug_av_fc_mpdu_cnt            = -1;
 static int hf_homeplug_av_fc_burst_cnt           = -1;
-static int hf_homeplug_av_fc_bbf		 = -1;
-static int hf_homeplug_av_fc_mrtfl		 = -1;
+static int hf_homeplug_av_fc_bbf                 = -1;
+static int hf_homeplug_av_fc_mrtfl               = -1;
 static int hf_homeplug_av_fc_clst                = -1;
 static int hf_homeplug_av_fc_rg_len              = -1;
 static int hf_homeplug_av_fc_mfs_cmd_mgmt        = -1;
 static int hf_homeplug_av_fc_mfs_cmd_data        = -1;
-static int hf_homeplug_av_fc_mfs_rsp_mgmt	 = -1;
-static int hf_homeplug_av_fc_mfs_rsp_data	 = -1;
-static int hf_homeplug_av_fc_bm_sacki		 = -1;
+static int hf_homeplug_av_fc_mfs_rsp_mgmt        = -1;
+static int hf_homeplug_av_fc_mfs_rsp_data        = -1;
+static int hf_homeplug_av_fc_bm_sacki            = -1;
 static int hf_homeplug_av_fc_rsr                 = -1;
 static int hf_homeplug_av_fc_mcf                 = -1;
 static int hf_homeplug_av_fc_dcppcf              = -1;
 static int hf_homeplug_av_fc_mnbf                = -1;
-static int hf_homeplug_av_fc_mst		 = -1;
+static int hf_homeplug_av_fc_mst                 = -1;
 
 /* Public MMEs */
 static int hf_homeplug_av_public                 = -1;
@@ -515,150 +515,150 @@ static gint ett_homeplug_av_tone_map_req         = -1;
 static gint ett_homeplug_av_tone_map_cnf         = -1;
 static gint ett_homeplug_av_tone_map_carrier     = -1;
 
-#define HOMEPLUG_AV_MMHDR_LEN			3	/* MM version (1) + MM type (2) */
+#define HOMEPLUG_AV_MMHDR_LEN                   3       /* MM version (1) + MM type (2) */
 
-#define HOMEPLUG_AV_PUBLIC_FRAG_COUNT_MASK	0x0F
-#define HOMEPLUG_AV_PUBLIC_FRAG_INDEX_MASK	0xF0
+#define HOMEPLUG_AV_PUBLIC_FRAG_COUNT_MASK      0x0F
+#define HOMEPLUG_AV_PUBLIC_FRAG_INDEX_MASK      0xF0
 
-#define HOMEPLUG_AV_MMTYPE_CC_DISC_LIST_REQ	0x0014
-#define HOMEPLUG_AV_MMTYPE_CC_DISC_LIST_CNF	0x0015
-#define HOMEPLUG_AV_MMTYPE_CM_ENC_PLD_IND	0x6004
-#define HOMEPLUG_AV_MMTYPE_CM_ENC_PLD_RSP	0x6005
-#define HOMEPLUG_AV_MMTYPE_CM_SET_KEY_REQ	0x6008
-#define HOMEPLUG_AV_MMTYPE_CM_SET_KEY_CNF	0x6009
-#define HOMEPLUG_AV_MMTYPE_CM_GET_KEY_REQ	0x600C
-#define HOMEPLUG_AV_MMTYPE_CM_GET_KEY_CNF	0x600D
-#define HOMEPLUG_AV_MMTYPE_CM_BRG_INFO_REQ	0x6020
-#define HOMEPLUG_AV_MMTYPE_CM_BRG_INFO_CNF	0x6021
-#define HOMEPLUG_AV_MMTYPE_CM_NW_INFO_REQ	0x6038
-#define HOMEPLUG_AV_MMTYPE_CM_NW_INFO_CNF	0x6039
-#define HOMEPLUG_AV_MMTYPE_CM_NW_STATS_REQ	0x6048
-#define HOMEPLUG_AV_MMTYPE_CM_NW_STATS_CNF	0x6049
-#define HOMEPLUG_AV_MMTYPE_GET_SW_REQ		0xA000
-#define HOMEPLUG_AV_MMTYPE_GET_SW_CNF		0xA001
-#define HOMEPLUG_AV_MMTYPE_WR_MEM_REQ		0xA004
-#define HOMEPLUG_AV_MMTYPE_WR_MEM_CNF		0xA005
-#define HOMEPLUG_AV_MMTYPE_RD_MEM_REQ		0xA008
-#define HOMEPLUG_AV_MMTYPE_RD_MEM_CNF		0xA009
-#define HOMEPLUG_AV_MMTYPE_ST_MAC_REQ		0xA00C
-#define HOMEPLUG_AV_MMTYPE_ST_MAC_CNF		0xA00D
-#define HOMEPLUG_AV_MMTYPE_GET_NVM_REQ		0xA010
-#define HOMEPLUG_AV_MMTYPE_GET_NVM_CNF		0xA011
-#define HOMEPLUG_AV_MMTYPE_RS_DEV_REQ		0xA01C
-#define HOMEPLUG_AV_MMTYPE_RS_DEV_CNF		0xA01D
-#define HOMEPLUG_AV_MMTYPE_WR_MOD_REQ		0xA020
-#define HOMEPLUG_AV_MMTYPE_WR_MOD_CNF		0xA021
-#define HOMEPLUG_AV_MMTYPE_WR_MOD_IND		0xA022
-#define HOMEPLUG_AV_MMTYPE_RD_MOD_REQ		0xA024
-#define HOMEPLUG_AV_MMTYPE_RD_MOD_CNF		0xA025
-#define HOMEPLUG_AV_MMTYPE_NVM_MOD_REQ		0xA028
-#define HOMEPLUG_AV_MMTYPE_NVM_MOD_CNF		0xA029
-#define HOMEPLUG_AV_MMTYPE_WD_RPT_REQ		0xA02C
-#define HOMEPLUG_AV_MMTYPE_WD_RPT_IND		0xA02E
-#define HOMEPLUG_AV_MMTYPE_LNK_STATS_REQ	0xA030
-#define HOMEPLUG_AV_MMTYPE_LNK_STATS_CNF	0xA031
-#define HOMEPLUG_AV_MMTYPE_SNIFFER_REQ		0xA034
-#define HOMEPLUG_AV_MMTYPE_SNIFFER_CNF		0xA035
-#define HOMEPLUG_AV_MMTYPE_SNIFFER_IND		0xA036
-#define HOMEPLUG_AV_MMTYPE_NW_INFO_REQ		0xA038
-#define HOMEPLUG_AV_MMTYPE_NW_INFO_CNF		0xA039
-#define HOMEPLUG_AV_MMTYPE_CP_RPT_REQ		0xA040
-#define HOMEPLUG_AV_MMTYPE_CP_RPT_IND		0xA042
-#define HOMEPLUG_AV_MMTYPE_FR_LBK_REQ		0xA048
-#define HOMEPLUG_AV_MMTYPE_FR_LBK_CNF		0xA049
-#define HOMEPLUG_AV_MMTYPE_LBK_STAT_REQ		0xA04C
-#define HOMEPLUG_AV_MMTYPE_LBK_STAT_CNF		0xA04D
-#define HOMEPLUG_AV_MMTYPE_SET_KEY_REQ		0xA050
-#define HOMEPLUG_AV_MMTYPE_SET_KEY_CNF		0xA051
-#define HOMEPLUG_AV_MMTYPE_MFG_STRING_REQ	0xA054
-#define HOMEPLUG_AV_MMTYPE_MFG_STRING_CNF	0xA055
-#define HOMEPLUG_AV_MMTYPE_RD_CBLOCK_REQ	0xA058
-#define HOMEPLUG_AV_MMTYPE_RD_CBLOCK_CNF	0xA059
-#define HOMEPLUG_AV_MMTYPE_SET_SDRAM_REQ	0xA05C
-#define HOMEPLUG_AV_MMTYPE_SET_SDRAM_CNF	0xA05D
-#define HOMEPLUG_AV_MMTYPE_HOST_ACTION_IND	0xA062
-#define HOMEPLUG_AV_MMTYPE_HOST_ACTION_RSP	0xA063
-#define HOMEPLUG_AV_MMTYPE_OP_ATTR_REQ		0xA068
-#define HOMEPLUG_AV_MMTYPE_OP_ATTR_CNF		0xA069
-#define HOMEPLUG_AV_MMTYPE_GET_ENET_PHY_REQ	0xA06C
-#define HOMEPLUG_AV_MMTYPE_GET_ENET_PHY_CNF	0xA06D
-#define HOMEPLUG_AV_MMTYPE_TONE_MAP_REQ		0xA070
-#define HOMEPLUG_AV_MMTYPE_TONE_MAP_CNF		0xA071
+#define HOMEPLUG_AV_MMTYPE_CC_DISC_LIST_REQ     0x0014
+#define HOMEPLUG_AV_MMTYPE_CC_DISC_LIST_CNF     0x0015
+#define HOMEPLUG_AV_MMTYPE_CM_ENC_PLD_IND       0x6004
+#define HOMEPLUG_AV_MMTYPE_CM_ENC_PLD_RSP       0x6005
+#define HOMEPLUG_AV_MMTYPE_CM_SET_KEY_REQ       0x6008
+#define HOMEPLUG_AV_MMTYPE_CM_SET_KEY_CNF       0x6009
+#define HOMEPLUG_AV_MMTYPE_CM_GET_KEY_REQ       0x600C
+#define HOMEPLUG_AV_MMTYPE_CM_GET_KEY_CNF       0x600D
+#define HOMEPLUG_AV_MMTYPE_CM_BRG_INFO_REQ      0x6020
+#define HOMEPLUG_AV_MMTYPE_CM_BRG_INFO_CNF      0x6021
+#define HOMEPLUG_AV_MMTYPE_CM_NW_INFO_REQ       0x6038
+#define HOMEPLUG_AV_MMTYPE_CM_NW_INFO_CNF       0x6039
+#define HOMEPLUG_AV_MMTYPE_CM_NW_STATS_REQ      0x6048
+#define HOMEPLUG_AV_MMTYPE_CM_NW_STATS_CNF      0x6049
+#define HOMEPLUG_AV_MMTYPE_GET_SW_REQ           0xA000
+#define HOMEPLUG_AV_MMTYPE_GET_SW_CNF           0xA001
+#define HOMEPLUG_AV_MMTYPE_WR_MEM_REQ           0xA004
+#define HOMEPLUG_AV_MMTYPE_WR_MEM_CNF           0xA005
+#define HOMEPLUG_AV_MMTYPE_RD_MEM_REQ           0xA008
+#define HOMEPLUG_AV_MMTYPE_RD_MEM_CNF           0xA009
+#define HOMEPLUG_AV_MMTYPE_ST_MAC_REQ           0xA00C
+#define HOMEPLUG_AV_MMTYPE_ST_MAC_CNF           0xA00D
+#define HOMEPLUG_AV_MMTYPE_GET_NVM_REQ          0xA010
+#define HOMEPLUG_AV_MMTYPE_GET_NVM_CNF          0xA011
+#define HOMEPLUG_AV_MMTYPE_RS_DEV_REQ           0xA01C
+#define HOMEPLUG_AV_MMTYPE_RS_DEV_CNF           0xA01D
+#define HOMEPLUG_AV_MMTYPE_WR_MOD_REQ           0xA020
+#define HOMEPLUG_AV_MMTYPE_WR_MOD_CNF           0xA021
+#define HOMEPLUG_AV_MMTYPE_WR_MOD_IND           0xA022
+#define HOMEPLUG_AV_MMTYPE_RD_MOD_REQ           0xA024
+#define HOMEPLUG_AV_MMTYPE_RD_MOD_CNF           0xA025
+#define HOMEPLUG_AV_MMTYPE_NVM_MOD_REQ          0xA028
+#define HOMEPLUG_AV_MMTYPE_NVM_MOD_CNF          0xA029
+#define HOMEPLUG_AV_MMTYPE_WD_RPT_REQ           0xA02C
+#define HOMEPLUG_AV_MMTYPE_WD_RPT_IND           0xA02E
+#define HOMEPLUG_AV_MMTYPE_LNK_STATS_REQ        0xA030
+#define HOMEPLUG_AV_MMTYPE_LNK_STATS_CNF        0xA031
+#define HOMEPLUG_AV_MMTYPE_SNIFFER_REQ          0xA034
+#define HOMEPLUG_AV_MMTYPE_SNIFFER_CNF          0xA035
+#define HOMEPLUG_AV_MMTYPE_SNIFFER_IND          0xA036
+#define HOMEPLUG_AV_MMTYPE_NW_INFO_REQ          0xA038
+#define HOMEPLUG_AV_MMTYPE_NW_INFO_CNF          0xA039
+#define HOMEPLUG_AV_MMTYPE_CP_RPT_REQ           0xA040
+#define HOMEPLUG_AV_MMTYPE_CP_RPT_IND           0xA042
+#define HOMEPLUG_AV_MMTYPE_FR_LBK_REQ           0xA048
+#define HOMEPLUG_AV_MMTYPE_FR_LBK_CNF           0xA049
+#define HOMEPLUG_AV_MMTYPE_LBK_STAT_REQ         0xA04C
+#define HOMEPLUG_AV_MMTYPE_LBK_STAT_CNF         0xA04D
+#define HOMEPLUG_AV_MMTYPE_SET_KEY_REQ          0xA050
+#define HOMEPLUG_AV_MMTYPE_SET_KEY_CNF          0xA051
+#define HOMEPLUG_AV_MMTYPE_MFG_STRING_REQ       0xA054
+#define HOMEPLUG_AV_MMTYPE_MFG_STRING_CNF       0xA055
+#define HOMEPLUG_AV_MMTYPE_RD_CBLOCK_REQ        0xA058
+#define HOMEPLUG_AV_MMTYPE_RD_CBLOCK_CNF        0xA059
+#define HOMEPLUG_AV_MMTYPE_SET_SDRAM_REQ        0xA05C
+#define HOMEPLUG_AV_MMTYPE_SET_SDRAM_CNF        0xA05D
+#define HOMEPLUG_AV_MMTYPE_HOST_ACTION_IND      0xA062
+#define HOMEPLUG_AV_MMTYPE_HOST_ACTION_RSP      0xA063
+#define HOMEPLUG_AV_MMTYPE_OP_ATTR_REQ          0xA068
+#define HOMEPLUG_AV_MMTYPE_OP_ATTR_CNF          0xA069
+#define HOMEPLUG_AV_MMTYPE_GET_ENET_PHY_REQ     0xA06C
+#define HOMEPLUG_AV_MMTYPE_GET_ENET_PHY_CNF     0xA06D
+#define HOMEPLUG_AV_MMTYPE_TONE_MAP_REQ         0xA070
+#define HOMEPLUG_AV_MMTYPE_TONE_MAP_CNF         0xA071
 
 static const value_string homeplug_av_mmtype_vals[] = {
     /* Public MMEs */
-    { HOMEPLUG_AV_MMTYPE_CC_DISC_LIST_REQ,	"Central Coordination Discovery List Request" },
-    { HOMEPLUG_AV_MMTYPE_CC_DISC_LIST_CNF,	"Central Coordination Discovery List Confirmation" },
-    { HOMEPLUG_AV_MMTYPE_CM_ENC_PLD_IND,	"Encrypted Payload Indicate" },
-    { HOMEPLUG_AV_MMTYPE_CM_ENC_PLD_RSP,	"Encrypted Payload Respons" },
-    { HOMEPLUG_AV_MMTYPE_CM_SET_KEY_REQ,	"Set Key Request" },
-    { HOMEPLUG_AV_MMTYPE_CM_SET_KEY_CNF,	"Set Key Confirmation" },
-    { HOMEPLUG_AV_MMTYPE_CM_GET_KEY_REQ,	"Get Key Request" },
-    { HOMEPLUG_AV_MMTYPE_CM_GET_KEY_CNF,	"Get Key Confirmation" },
-    { HOMEPLUG_AV_MMTYPE_CM_BRG_INFO_REQ,	"Get Bridge Informations Request" },
-    { HOMEPLUG_AV_MMTYPE_CM_BRG_INFO_CNF,	"Get Bridge Informations Confirmation" },
-    { HOMEPLUG_AV_MMTYPE_CM_NW_INFO_REQ,	"Get Network Informations Request" },
-    { HOMEPLUG_AV_MMTYPE_CM_NW_INFO_CNF,	"Get Network Informations Confirmation" },
-    { HOMEPLUG_AV_MMTYPE_CM_NW_STATS_REQ,	"Get Network Statistics Request" },
-    { HOMEPLUG_AV_MMTYPE_CM_NW_STATS_CNF,	"Get Network Statistics Confirmation" },
+    { HOMEPLUG_AV_MMTYPE_CC_DISC_LIST_REQ,      "Central Coordination Discovery List Request" },
+    { HOMEPLUG_AV_MMTYPE_CC_DISC_LIST_CNF,      "Central Coordination Discovery List Confirmation" },
+    { HOMEPLUG_AV_MMTYPE_CM_ENC_PLD_IND,        "Encrypted Payload Indicate" },
+    { HOMEPLUG_AV_MMTYPE_CM_ENC_PLD_RSP,        "Encrypted Payload Respons" },
+    { HOMEPLUG_AV_MMTYPE_CM_SET_KEY_REQ,        "Set Key Request" },
+    { HOMEPLUG_AV_MMTYPE_CM_SET_KEY_CNF,        "Set Key Confirmation" },
+    { HOMEPLUG_AV_MMTYPE_CM_GET_KEY_REQ,        "Get Key Request" },
+    { HOMEPLUG_AV_MMTYPE_CM_GET_KEY_CNF,        "Get Key Confirmation" },
+    { HOMEPLUG_AV_MMTYPE_CM_BRG_INFO_REQ,       "Get Bridge Informations Request" },
+    { HOMEPLUG_AV_MMTYPE_CM_BRG_INFO_CNF,       "Get Bridge Informations Confirmation" },
+    { HOMEPLUG_AV_MMTYPE_CM_NW_INFO_REQ,        "Get Network Informations Request" },
+    { HOMEPLUG_AV_MMTYPE_CM_NW_INFO_CNF,        "Get Network Informations Confirmation" },
+    { HOMEPLUG_AV_MMTYPE_CM_NW_STATS_REQ,       "Get Network Statistics Request" },
+    { HOMEPLUG_AV_MMTYPE_CM_NW_STATS_CNF,       "Get Network Statistics Confirmation" },
 
     /* Intellon vendor-specific MMEs */
-    { HOMEPLUG_AV_MMTYPE_GET_SW_REQ, 		"Get Device/SW Version Request" },
-    { HOMEPLUG_AV_MMTYPE_GET_SW_CNF, 		"Get Device/SW Version Confirmation" },
-    { HOMEPLUG_AV_MMTYPE_WR_MEM_REQ,		"Write MAC Memory Request" },
-    { HOMEPLUG_AV_MMTYPE_WR_MEM_CNF,		"Write MAC Memory Confirmation" },
-    { HOMEPLUG_AV_MMTYPE_RD_MEM_REQ,		"Read MAC Memory Request" },
-    { HOMEPLUG_AV_MMTYPE_RD_MEM_CNF,		"Read MAC Memory Confirmation" },
-    { HOMEPLUG_AV_MMTYPE_ST_MAC_REQ,		"Start MAC Request" },
-    { HOMEPLUG_AV_MMTYPE_ST_MAC_CNF,		"Start MAC Confirmation" },
-    { HOMEPLUG_AV_MMTYPE_GET_NVM_REQ,		"Get NVM Parameters Request" },
-    { HOMEPLUG_AV_MMTYPE_GET_NVM_CNF,		"Get NVM Parameters Confirmation" },
-    { HOMEPLUG_AV_MMTYPE_RS_DEV_REQ,		"Reset Device Request" },
-    { HOMEPLUG_AV_MMTYPE_RS_DEV_CNF,		"Reset Device Confirmation" },
-    { HOMEPLUG_AV_MMTYPE_WR_MOD_REQ,		"Write Module Data Request" },
-    { HOMEPLUG_AV_MMTYPE_WR_MOD_CNF,		"Write Module Data Confirmation" },
-    { HOMEPLUG_AV_MMTYPE_WR_MOD_IND,		"Write Module Data Indicate" },
-    { HOMEPLUG_AV_MMTYPE_RD_MOD_REQ,		"Read Module Data Request" },
-    { HOMEPLUG_AV_MMTYPE_RD_MOD_CNF,		"Read Module Data Confirmation" },
-    { HOMEPLUG_AV_MMTYPE_NVM_MOD_REQ,		"Write Module Data to NVM Request" },
-    { HOMEPLUG_AV_MMTYPE_NVM_MOD_CNF,		"Write Module Data to NVM Confirmation" },
-    { HOMEPLUG_AV_MMTYPE_WD_RPT_REQ,		"Get Watchdog Report Request" },
-    { HOMEPLUG_AV_MMTYPE_WD_RPT_IND,		"Get Watchdog Report Indicate" },
-    { HOMEPLUG_AV_MMTYPE_LNK_STATS_REQ,		"Link Statistics Request" },
-    { HOMEPLUG_AV_MMTYPE_LNK_STATS_CNF,		"Link Statistics Confirmation" },
-    { HOMEPLUG_AV_MMTYPE_SNIFFER_REQ,		"Sniffer Request" },
-    { HOMEPLUG_AV_MMTYPE_SNIFFER_CNF,		"Sniffer Confirmation" },
-    { HOMEPLUG_AV_MMTYPE_SNIFFER_IND,		"Sniffer Indicate" },
-    { HOMEPLUG_AV_MMTYPE_NW_INFO_REQ,		"Network Info Request" },
-    { HOMEPLUG_AV_MMTYPE_NW_INFO_CNF,		"Network Info Confirmation" },
-    { HOMEPLUG_AV_MMTYPE_CP_RPT_REQ,		"Check Points Request" },
-    { HOMEPLUG_AV_MMTYPE_CP_RPT_IND,		"Check Points Indicate" },
-    { HOMEPLUG_AV_MMTYPE_FR_LBK_REQ,		"Loopback Request" },
-    { HOMEPLUG_AV_MMTYPE_FR_LBK_CNF,		"Loopback Confirmation" },
-    { HOMEPLUG_AV_MMTYPE_LBK_STAT_REQ,		"Loopback Status Request" },
-    { HOMEPLUG_AV_MMTYPE_LBK_STAT_CNF,		"Loopback Status Confirmation" },
-    { HOMEPLUG_AV_MMTYPE_SET_KEY_REQ,		"Set Encryption Key Request" },
-    { HOMEPLUG_AV_MMTYPE_SET_KEY_CNF,		"Set Encryption Key Confirmation" },
-    { HOMEPLUG_AV_MMTYPE_MFG_STRING_REQ,	"Get Manufacturer String Request" },
-    { HOMEPLUG_AV_MMTYPE_MFG_STRING_CNF,	"Get Manufacturer String Confirmation" },
-    { HOMEPLUG_AV_MMTYPE_RD_CBLOCK_REQ,		"Read Configuration Block Request" },
-    { HOMEPLUG_AV_MMTYPE_RD_CBLOCK_CNF,		"Read Configuration Block Confirmation" },
-    { HOMEPLUG_AV_MMTYPE_SET_SDRAM_REQ,		"Set SDRAM Configuration Request" },
-    { HOMEPLUG_AV_MMTYPE_SET_SDRAM_CNF,		"Set SDRAM Configuration Confirmation" },
-    { HOMEPLUG_AV_MMTYPE_HOST_ACTION_IND,	"Embedded Host Action Required Indication" },
-    { HOMEPLUG_AV_MMTYPE_HOST_ACTION_RSP,	"Embedded Host Action Required Respons" },
-    { HOMEPLUG_AV_MMTYPE_OP_ATTR_REQ,		"Get Device Attributes Request" },
-    { HOMEPLUG_AV_MMTYPE_OP_ATTR_CNF,		"Get Device Attributes Confirmation" },
-    { HOMEPLUG_AV_MMTYPE_GET_ENET_PHY_REQ,	"Get Ethernet PHY Settings Request" },
-    { HOMEPLUG_AV_MMTYPE_GET_ENET_PHY_CNF,	"Get Ethernet PHY Settings Confirmation" },
-    { HOMEPLUG_AV_MMTYPE_TONE_MAP_REQ,		"Tone Map Characteristics Request" },
-    { HOMEPLUG_AV_MMTYPE_TONE_MAP_CNF,		"Tone Map Characteristics Confirmation" },
+    { HOMEPLUG_AV_MMTYPE_GET_SW_REQ,            "Get Device/SW Version Request" },
+    { HOMEPLUG_AV_MMTYPE_GET_SW_CNF,            "Get Device/SW Version Confirmation" },
+    { HOMEPLUG_AV_MMTYPE_WR_MEM_REQ,            "Write MAC Memory Request" },
+    { HOMEPLUG_AV_MMTYPE_WR_MEM_CNF,            "Write MAC Memory Confirmation" },
+    { HOMEPLUG_AV_MMTYPE_RD_MEM_REQ,            "Read MAC Memory Request" },
+    { HOMEPLUG_AV_MMTYPE_RD_MEM_CNF,            "Read MAC Memory Confirmation" },
+    { HOMEPLUG_AV_MMTYPE_ST_MAC_REQ,            "Start MAC Request" },
+    { HOMEPLUG_AV_MMTYPE_ST_MAC_CNF,            "Start MAC Confirmation" },
+    { HOMEPLUG_AV_MMTYPE_GET_NVM_REQ,           "Get NVM Parameters Request" },
+    { HOMEPLUG_AV_MMTYPE_GET_NVM_CNF,           "Get NVM Parameters Confirmation" },
+    { HOMEPLUG_AV_MMTYPE_RS_DEV_REQ,            "Reset Device Request" },
+    { HOMEPLUG_AV_MMTYPE_RS_DEV_CNF,            "Reset Device Confirmation" },
+    { HOMEPLUG_AV_MMTYPE_WR_MOD_REQ,            "Write Module Data Request" },
+    { HOMEPLUG_AV_MMTYPE_WR_MOD_CNF,            "Write Module Data Confirmation" },
+    { HOMEPLUG_AV_MMTYPE_WR_MOD_IND,            "Write Module Data Indicate" },
+    { HOMEPLUG_AV_MMTYPE_RD_MOD_REQ,            "Read Module Data Request" },
+    { HOMEPLUG_AV_MMTYPE_RD_MOD_CNF,            "Read Module Data Confirmation" },
+    { HOMEPLUG_AV_MMTYPE_NVM_MOD_REQ,           "Write Module Data to NVM Request" },
+    { HOMEPLUG_AV_MMTYPE_NVM_MOD_CNF,           "Write Module Data to NVM Confirmation" },
+    { HOMEPLUG_AV_MMTYPE_WD_RPT_REQ,            "Get Watchdog Report Request" },
+    { HOMEPLUG_AV_MMTYPE_WD_RPT_IND,            "Get Watchdog Report Indicate" },
+    { HOMEPLUG_AV_MMTYPE_LNK_STATS_REQ,         "Link Statistics Request" },
+    { HOMEPLUG_AV_MMTYPE_LNK_STATS_CNF,         "Link Statistics Confirmation" },
+    { HOMEPLUG_AV_MMTYPE_SNIFFER_REQ,           "Sniffer Request" },
+    { HOMEPLUG_AV_MMTYPE_SNIFFER_CNF,           "Sniffer Confirmation" },
+    { HOMEPLUG_AV_MMTYPE_SNIFFER_IND,           "Sniffer Indicate" },
+    { HOMEPLUG_AV_MMTYPE_NW_INFO_REQ,           "Network Info Request" },
+    { HOMEPLUG_AV_MMTYPE_NW_INFO_CNF,           "Network Info Confirmation" },
+    { HOMEPLUG_AV_MMTYPE_CP_RPT_REQ,            "Check Points Request" },
+    { HOMEPLUG_AV_MMTYPE_CP_RPT_IND,            "Check Points Indicate" },
+    { HOMEPLUG_AV_MMTYPE_FR_LBK_REQ,            "Loopback Request" },
+    { HOMEPLUG_AV_MMTYPE_FR_LBK_CNF,            "Loopback Confirmation" },
+    { HOMEPLUG_AV_MMTYPE_LBK_STAT_REQ,          "Loopback Status Request" },
+    { HOMEPLUG_AV_MMTYPE_LBK_STAT_CNF,          "Loopback Status Confirmation" },
+    { HOMEPLUG_AV_MMTYPE_SET_KEY_REQ,           "Set Encryption Key Request" },
+    { HOMEPLUG_AV_MMTYPE_SET_KEY_CNF,           "Set Encryption Key Confirmation" },
+    { HOMEPLUG_AV_MMTYPE_MFG_STRING_REQ,        "Get Manufacturer String Request" },
+    { HOMEPLUG_AV_MMTYPE_MFG_STRING_CNF,        "Get Manufacturer String Confirmation" },
+    { HOMEPLUG_AV_MMTYPE_RD_CBLOCK_REQ,         "Read Configuration Block Request" },
+    { HOMEPLUG_AV_MMTYPE_RD_CBLOCK_CNF,         "Read Configuration Block Confirmation" },
+    { HOMEPLUG_AV_MMTYPE_SET_SDRAM_REQ,         "Set SDRAM Configuration Request" },
+    { HOMEPLUG_AV_MMTYPE_SET_SDRAM_CNF,         "Set SDRAM Configuration Confirmation" },
+    { HOMEPLUG_AV_MMTYPE_HOST_ACTION_IND,       "Embedded Host Action Required Indication" },
+    { HOMEPLUG_AV_MMTYPE_HOST_ACTION_RSP,       "Embedded Host Action Required Respons" },
+    { HOMEPLUG_AV_MMTYPE_OP_ATTR_REQ,           "Get Device Attributes Request" },
+    { HOMEPLUG_AV_MMTYPE_OP_ATTR_CNF,           "Get Device Attributes Confirmation" },
+    { HOMEPLUG_AV_MMTYPE_GET_ENET_PHY_REQ,      "Get Ethernet PHY Settings Request" },
+    { HOMEPLUG_AV_MMTYPE_GET_ENET_PHY_CNF,      "Get Ethernet PHY Settings Confirmation" },
+    { HOMEPLUG_AV_MMTYPE_TONE_MAP_REQ,          "Tone Map Characteristics Request" },
+    { HOMEPLUG_AV_MMTYPE_TONE_MAP_CNF,          "Tone Map Characteristics Confirmation" },
     { 0, NULL }
 };
 static value_string_ext homeplug_av_mmtype_vals_ext = VALUE_STRING_EXT_INIT(homeplug_av_mmtype_vals);
 
 /* Versions */
-#define HOMEPLUG_AV_MMVER_MASK			0xFF
+#define HOMEPLUG_AV_MMVER_MASK                  0xFF
 
 static const value_string homeplug_av_mmver_vals[] = {
     { 0x00, "1.0" },
@@ -667,7 +667,7 @@ static const value_string homeplug_av_mmver_vals[] = {
 };
 
 /* MMTYPE LSB Values */
-#define HOMEPLUG_AV_MMTYPE_LSB_MASK		0x03
+#define HOMEPLUG_AV_MMTYPE_LSB_MASK             0x03
 
 static const value_string homeplug_av_mmtype_lsb_vals[] = {
     { 0x00, "Request" },
@@ -678,15 +678,15 @@ static const value_string homeplug_av_mmtype_lsb_vals[] = {
 };
 
 /* MMTYPE MSB Values */
-#define HOMEPLUG_AV_MMTYPE_MSB_STA_CCO		0x00
-#define HOMEPLUG_AV_MMTYPE_MSB_PROXY		0x01
-#define HOMEPLUG_AV_MMTYPE_MSB_CCO_CCO		0x02
-#define HOMEPLUG_AV_MMTYPE_MSB_STA_STA		0x03
-#define HOMEPLUG_AV_MMTYPE_MSB_MANUF		0x04
-#define HOMEPLUG_AV_MMTYPE_MSB_VENDOR		0x05
-#define HOMEPLUG_AV_MMTYPE_MSB_RSV		0x06
-#define HOMEPLUG_AV_MMTYPE_MSB_MASK		0xE000
-#define HOMEPLUG_AV_MMTYPE_MSB_SHIFT		(5)
+#define HOMEPLUG_AV_MMTYPE_MSB_STA_CCO          0x00
+#define HOMEPLUG_AV_MMTYPE_MSB_PROXY            0x01
+#define HOMEPLUG_AV_MMTYPE_MSB_CCO_CCO          0x02
+#define HOMEPLUG_AV_MMTYPE_MSB_STA_STA          0x03
+#define HOMEPLUG_AV_MMTYPE_MSB_MANUF            0x04
+#define HOMEPLUG_AV_MMTYPE_MSB_VENDOR           0x05
+#define HOMEPLUG_AV_MMTYPE_MSB_RSV              0x06
+#define HOMEPLUG_AV_MMTYPE_MSB_MASK             0xE000
+#define HOMEPLUG_AV_MMTYPE_MSB_SHIFT            (5)
 
 static const value_string homeplug_av_mmtype_msb_vals[] = {
    { HOMEPLUG_AV_MMTYPE_MSB_STA_CCO, "STA - Central Coordinator" },
@@ -698,7 +698,7 @@ static const value_string homeplug_av_mmtype_msb_vals[] = {
    { 0, NULL }
 };
 
-#define HOMEPLUG_AV_CC_STA_NET_MASK	0x01
+#define HOMEPLUG_AV_CC_STA_NET_MASK     0x01
 
 static const value_string homeplug_av_cc_sta_net_type_vals[] = {
    { 0x00, "Different network" },
@@ -707,27 +707,27 @@ static const value_string homeplug_av_cc_sta_net_type_vals[] = {
 };
 
 static const value_string homeplug_av_sig_level_vals[] = {
-   { 0x00,	"N/A" },
-   { 0x01,	"> - 10 dB, but <= 0 dB" },
-   { 0x02,	"> - 15 dB, but <= -10 dB" },
-   { 0x03,	"> - 20 dB, but <= -15 dB" },
-   { 0x04,	"> - 25 dB, but <= -20 dB" },
-   { 0x05,	"> - 30 dB, but <= -25 dB" },
-   { 0x06,	"> - 35 dB, but <= -30 dB" },
-   { 0x07,	"> - 40 dB, but <= -35 dB" },
-   { 0x08,	"> - 45 dB, but <= -40 dB" },
-   { 0x09,	"> - 50 dB, but <= -45 dB" },
-   { 0x0A,	"> - 55 dB, but <= -50 dB" },
-   { 0x0B,	"> - 60 dB, but <= -55 dB" },
-   { 0x0C,	"> - 65 dB, but <= -60 dB" },
-   { 0x0D,	"> - 70 dB, but <= -65 dB" },
-   { 0x0E,	"> - 75 dB, but <= -70 dB" },
-   { 0x0F,	"<= -75 dB" },
+   { 0x00,      "N/A" },
+   { 0x01,      "> - 10 dB, but <= 0 dB" },
+   { 0x02,      "> - 15 dB, but <= -10 dB" },
+   { 0x03,      "> - 20 dB, but <= -15 dB" },
+   { 0x04,      "> - 25 dB, but <= -20 dB" },
+   { 0x05,      "> - 30 dB, but <= -25 dB" },
+   { 0x06,      "> - 35 dB, but <= -30 dB" },
+   { 0x07,      "> - 40 dB, but <= -35 dB" },
+   { 0x08,      "> - 45 dB, but <= -40 dB" },
+   { 0x09,      "> - 50 dB, but <= -45 dB" },
+   { 0x0A,      "> - 55 dB, but <= -50 dB" },
+   { 0x0B,      "> - 60 dB, but <= -55 dB" },
+   { 0x0C,      "> - 65 dB, but <= -60 dB" },
+   { 0x0D,      "> - 70 dB, but <= -65 dB" },
+   { 0x0E,      "> - 75 dB, but <= -70 dB" },
+   { 0x0F,      "<= -75 dB" },
    { 0, NULL }
 };
 static value_string_ext homeplug_av_sig_level_vals_ext = VALUE_STRING_EXT_INIT(homeplug_av_sig_level_vals);
 
-#define HOMEPLUG_AV_CCO_STATUS_MASK		0x07
+#define HOMEPLUG_AV_CCO_STATUS_MASK             0x07
 
 static const value_string homeplug_av_cco_status_vals[] = {
    { 0x00, "Unknown" },
@@ -738,7 +738,19 @@ static const value_string homeplug_av_cco_status_vals[] = {
    { 0, NULL }
 };
 
-#define HOMEPLUG_AV_NW_INFO_ROLE_MASK	0x03
+static const value_string homeplug_av_nw_info_del_vals[] = {
+    { 0x00, "Beacon" },
+    { 0x01, "Start-of-Frame" },
+    { 0x02, "Selective Acknowledgment" },
+    { 0x03, "RTS/CTS" },
+    { 0x04, "Sound" },
+    { 0x05, "Reverse Start-of-Frame" },
+    { 0x06, "Reserved" },
+    { 0x07, "Reserved" },
+    { 0, NULL }
+};
+
+#define HOMEPLUG_AV_NW_INFO_ROLE_MASK   0x03
 
 static const value_string homeplug_av_nw_info_role_vals[] = {
    { 0x00, "Station" },
@@ -747,7 +759,7 @@ static const value_string homeplug_av_nw_info_role_vals[] = {
    { 0, NULL }
 };
 
-#define HOMEPLUG_AV_NW_INFO_NID_MASK	0x08
+#define HOMEPLUG_AV_NW_INFO_NID_MASK    0x08
 
 static const value_string homeplug_nw_info_access_vals[] = {
    { 0x00, "In-home" },
@@ -755,7 +767,7 @@ static const value_string homeplug_nw_info_access_vals[] = {
    { 0, NULL }
 };
 
-#define HOMEPLUG_AV_PEKS_MASK		0xF0
+#define HOMEPLUG_AV_PEKS_MASK           0xF0
 
 static const value_string homeplug_av_peks_vals[] = {
    { 0x00, "Destination STA's DAK" },
@@ -778,7 +790,7 @@ static const value_string homeplug_av_peks_vals[] = {
 };
 static value_string_ext homeplug_av_peks_vals_ext = VALUE_STRING_EXT_INIT(homeplug_av_peks_vals);
 
-#define HOMEPLUG_AV_AVLN_STATUS_MASK	0x0F
+#define HOMEPLUG_AV_AVLN_STATUS_MASK    0x0F
 
 static const value_string homeplug_av_avln_status_vals[] = {
    { 0x00, "Unassociated and Level-0 CCo capable" },
@@ -793,41 +805,41 @@ static const value_string homeplug_av_avln_status_vals[] = {
    { 0, NULL }
 };
 
-#define HOMEPLUG_AV_PID_AUTH_STA	0x00
-#define HOMEPLUG_AV_PID_PROV_AUTH_NEK	0x01
-#define HOMEPLUG_AV_PID_PROV_AUTH_DAK	0x02
-#define HOMEPLUG_AV_PID_PROV_AUTH_UKE	0x03
-#define HOMEPLUG_AV_PID_HLE		0x04
-#define HOMEPLUG_AV_PID_MASK		0x07
+#define HOMEPLUG_AV_PID_AUTH_STA        0x00
+#define HOMEPLUG_AV_PID_PROV_AUTH_NEK   0x01
+#define HOMEPLUG_AV_PID_PROV_AUTH_DAK   0x02
+#define HOMEPLUG_AV_PID_PROV_AUTH_UKE   0x03
+#define HOMEPLUG_AV_PID_HLE             0x04
+#define HOMEPLUG_AV_PID_MASK            0x07
 
 static const value_string homeplug_av_pid_vals[] = {
-   { HOMEPLUG_AV_PID_AUTH_STA,		"Authentication request by new STA" },
-   { HOMEPLUG_AV_PID_PROV_AUTH_NEK,	"Provision authenticated STA with new NEK by CCo" },
-   { HOMEPLUG_AV_PID_PROV_AUTH_DAK,	"Provision STA with NMK using DAK" },
-   { HOMEPLUG_AV_PID_PROV_AUTH_UKE,	"Provision STA with NMK using UKE" },
-   { HOMEPLUG_AV_PID_HLE,		"HLE" },
+   { HOMEPLUG_AV_PID_AUTH_STA,          "Authentication request by new STA" },
+   { HOMEPLUG_AV_PID_PROV_AUTH_NEK,     "Provision authenticated STA with new NEK by CCo" },
+   { HOMEPLUG_AV_PID_PROV_AUTH_DAK,     "Provision STA with NMK using DAK" },
+   { HOMEPLUG_AV_PID_PROV_AUTH_UKE,     "Provision STA with NMK using UKE" },
+   { HOMEPLUG_AV_PID_HLE,               "HLE" },
    { 0, NULL }
 };
 
-#define HOMEPLUG_AV_KEY_TYPE_DAK	0x00
-#define HOMEPLUG_AV_KEY_TYPE_NMK	0x01
-#define HOMEPLUG_AV_KEY_TYPE_NEK	0x02
-#define HOMEPLUG_AV_KEY_TYPE_TEK	0x03
-#define HOMEPLUG_AV_KEY_TYPE_HASH	0x04
-#define HOMEPLUG_AV_KEY_TYPE_NONE	0x05
-#define HOMEPLUG_AV_KEY_TYPE_MASK	0x07
+#define HOMEPLUG_AV_KEY_TYPE_DAK        0x00
+#define HOMEPLUG_AV_KEY_TYPE_NMK        0x01
+#define HOMEPLUG_AV_KEY_TYPE_NEK        0x02
+#define HOMEPLUG_AV_KEY_TYPE_TEK        0x03
+#define HOMEPLUG_AV_KEY_TYPE_HASH       0x04
+#define HOMEPLUG_AV_KEY_TYPE_NONE       0x05
+#define HOMEPLUG_AV_KEY_TYPE_MASK       0x07
 
 static const value_string homeplug_av_key_type_vals[] = {
-   { HOMEPLUG_AV_KEY_TYPE_DAK,	"DAK" },
-   { HOMEPLUG_AV_KEY_TYPE_NMK,	"NMK" },
-   { HOMEPLUG_AV_KEY_TYPE_NEK,	"NEK" },
-   { HOMEPLUG_AV_KEY_TYPE_TEK,	"TEK" },
-   { HOMEPLUG_AV_KEY_TYPE_HASH,	"Hash Key" },
-   { HOMEPLUG_AV_KEY_TYPE_NONE,	"Nonce only (no key)" },
+   { HOMEPLUG_AV_KEY_TYPE_DAK,  "DAK" },
+   { HOMEPLUG_AV_KEY_TYPE_NMK,  "NMK" },
+   { HOMEPLUG_AV_KEY_TYPE_NEK,  "NEK" },
+   { HOMEPLUG_AV_KEY_TYPE_TEK,  "TEK" },
+   { HOMEPLUG_AV_KEY_TYPE_HASH, "Hash Key" },
+   { HOMEPLUG_AV_KEY_TYPE_NONE, "Nonce only (no key)" },
    { 0, NULL }
 };
 
-#define HOMEPLUG_AV_DEV_ID_MASK		0x03
+#define HOMEPLUG_AV_DEV_ID_MASK         0x03
 
 static const value_string homeplug_av_dev_id_vals[] = {
    { 0x00, "Uknown" },
@@ -837,7 +849,7 @@ static const value_string homeplug_av_dev_id_vals[] = {
    { 0, NULL }
 };
 
-#define HOMEPLUG_AV_REQ_TYPE_MASK	0x01
+#define HOMEPLUG_AV_REQ_TYPE_MASK       0x01
 
 static const value_string homeplug_av_req_type_vals[] = {
    { 0x00, "Direct" },
@@ -845,7 +857,7 @@ static const value_string homeplug_av_req_type_vals[] = {
    { 0, NULL }
 };
 
-#define HOMEPLUG_AV_KEY_RESULT_MASK	0x03
+#define HOMEPLUG_AV_KEY_RESULT_MASK     0x03
 
 static const value_string homeplug_av_key_result_vals[] = {
    { 0x00, "Key granted" },
@@ -854,7 +866,7 @@ static const value_string homeplug_av_key_result_vals[] = {
    { 0, NULL }
 };
 
-#define HOMEPLUG_AV_ENET_PHY_SPEED_MASK	0x03
+#define HOMEPLUG_AV_ENET_PHY_SPEED_MASK 0x03
 
 static const value_string homeplug_av_enet_phy_speed_vals[] = {
    { 0x00, "10 Mbits/sec" },
@@ -871,7 +883,7 @@ static const value_string homeplug_av_enet_phy_duplex_vals[] = {
    { 0, NULL }
 };
 
-#define HOMEPLUG_AV_ENET_PHY_MCONTROL_MASK	0x01
+#define HOMEPLUG_AV_ENET_PHY_MCONTROL_MASK      0x01
 
 static const value_string homeplug_av_enet_phy_mcontrol_vals[] = {
    { 0x00, "Read" },
@@ -940,7 +952,7 @@ static const value_string homeplug_av_mod_nvm_status_vals[] = {
    { 0, NULL }
 };
 
-#define HOMEPLUG_AV_RPT_CLR_MASK		0x01
+#define HOMEPLUG_AV_RPT_CLR_MASK                0x01
 
 static const value_string homeplug_av_rpt_clr_vals[] = {
    { 0x00, "Get Report" },
@@ -948,7 +960,7 @@ static const value_string homeplug_av_rpt_clr_vals[] = {
    { 0, NULL }
 };
 
-#define HOMEPLUG_AV_GEN_STATUS_MASK		0x03
+#define HOMEPLUG_AV_GEN_STATUS_MASK             0x03
 
 static const value_string homeplug_av_generic_status_vals[] = {
    { 0x00, "Success" },
@@ -957,7 +969,7 @@ static const value_string homeplug_av_generic_status_vals[] = {
    { 0, NULL }
 };
 
-#define HOMEPLUG_AV_LNK_STATS_MCTL_MASK		0x01
+#define HOMEPLUG_AV_LNK_STATS_MCTL_MASK         0x01
 
 static const value_string homeplug_av_lnk_stats_mctrl_vals[] = {
    { 0x00, "Read" },
@@ -965,10 +977,10 @@ static const value_string homeplug_av_lnk_stats_mctrl_vals[] = {
    { 0, NULL }
 };
 
-#define HOMEPLUG_AV_LNK_STATS_DIR_TX		0x00
-#define HOMEPLUG_AV_LNK_STATS_DIR_RX		0x01
-#define HOMEPLUG_AV_LNK_STATS_DIR_TX_RX		0x02
-#define HOMEPLUG_AV_LNK_STATS_DIR_MASK		0x03
+#define HOMEPLUG_AV_LNK_STATS_DIR_TX            0x00
+#define HOMEPLUG_AV_LNK_STATS_DIR_RX            0x01
+#define HOMEPLUG_AV_LNK_STATS_DIR_TX_RX         0x02
+#define HOMEPLUG_AV_LNK_STATS_DIR_MASK          0x03
 
 static const value_string homeplug_av_lnk_stats_dir_vals[] = {
    { HOMEPLUG_AV_LNK_STATS_DIR_TX, "Tx" },
@@ -988,22 +1000,22 @@ static const value_string homeplug_av_lnk_stats_lid_vals[] = {
    { 0, NULL }
 };
 
-#define HOMEPLUG_AV_LNK_STATS_STATUS_SUCCESS	0x00
-#define HOMEPLUG_AV_LNK_STATS_STATUS_INV_CTRL	0x01
-#define HOMEPLUG_AV_LNK_STATS_STATUS_INV_DIR	0x02
-#define HOMEPLUG_AV_LNK_STATS_STATUS_INV_LID	0x10
-#define HOMEPLUG_AV_LNK_STATS_STATUS_INV_MAC	0x20
+#define HOMEPLUG_AV_LNK_STATS_STATUS_SUCCESS    0x00
+#define HOMEPLUG_AV_LNK_STATS_STATUS_INV_CTRL   0x01
+#define HOMEPLUG_AV_LNK_STATS_STATUS_INV_DIR    0x02
+#define HOMEPLUG_AV_LNK_STATS_STATUS_INV_LID    0x10
+#define HOMEPLUG_AV_LNK_STATS_STATUS_INV_MAC    0x20
 
 static const value_string homeplug_av_lnk_status_vals[] = {
-   { HOMEPLUG_AV_LNK_STATS_STATUS_SUCCESS,	"Success" },
-   { HOMEPLUG_AV_LNK_STATS_STATUS_INV_CTRL,	"Invalid Control" },
-   { HOMEPLUG_AV_LNK_STATS_STATUS_INV_DIR,	"Invalid Direction" },
-   { HOMEPLUG_AV_LNK_STATS_STATUS_INV_LID,	"Invalid Link ID" },
-   { HOMEPLUG_AV_LNK_STATS_STATUS_INV_MAC,	"Invalid MAC Address" },
+   { HOMEPLUG_AV_LNK_STATS_STATUS_SUCCESS,      "Success" },
+   { HOMEPLUG_AV_LNK_STATS_STATUS_INV_CTRL,     "Invalid Control" },
+   { HOMEPLUG_AV_LNK_STATS_STATUS_INV_DIR,      "Invalid Direction" },
+   { HOMEPLUG_AV_LNK_STATS_STATUS_INV_LID,      "Invalid Link ID" },
+   { HOMEPLUG_AV_LNK_STATS_STATUS_INV_MAC,      "Invalid MAC Address" },
    { 0, NULL }
 };
 
-#define HOMEPLUG_AV_SNIFFER_CTRL_MASK		0x03
+#define HOMEPLUG_AV_SNIFFER_CTRL_MASK           0x03
 
 static const value_string homeplug_av_sniffer_ctrl_vals[] = {
    { 0x00, "Disable" },
@@ -1023,7 +1035,7 @@ static const value_string homeplug_av_sniffer_type_vals[] = {
    { 0, NULL }
 };
 
-#define HOMEPLUG_AV_LBK_STATUS_MASK		0x01
+#define HOMEPLUG_AV_LBK_STATUS_MASK             0x01
 
 static const value_string homeplug_av_lbk_status_vals[] = {
    { 0x00, "Done" },
@@ -1053,18 +1065,18 @@ static const value_string homeplug_av_cblock_status_vals[] = {
    { 0, NULL }
 };
 
-#define HOMEPLUG_AV_HOST_ACTION_SOFT_LDR	0x00
-#define HOMEPLUG_AV_HOST_ACTION_FW_UPG_RDY	0x01
-#define HOMEPLUG_AV_HOST_ACTION_PIB_UP_RDY	0x02
-#define HOMEPLUG_AV_HOST_ACTION_FW_PIB_UP_RDY	0x03
-#define HOMEPLUG_AV_HOST_ACTION_BOOT_LDR	0x04
+#define HOMEPLUG_AV_HOST_ACTION_SOFT_LDR        0x00
+#define HOMEPLUG_AV_HOST_ACTION_FW_UPG_RDY      0x01
+#define HOMEPLUG_AV_HOST_ACTION_PIB_UP_RDY      0x02
+#define HOMEPLUG_AV_HOST_ACTION_FW_PIB_UP_RDY   0x03
+#define HOMEPLUG_AV_HOST_ACTION_BOOT_LDR        0x04
 
 static const value_string homeplug_av_host_action_vals[] = {
-   { HOMEPLUG_AV_HOST_ACTION_SOFT_LDR,		"Loader (Soft/Bootloader)" },
-   { HOMEPLUG_AV_HOST_ACTION_FW_UPG_RDY,	"Firmware Upgrade Ready" },
-   { HOMEPLUG_AV_HOST_ACTION_PIB_UP_RDY,	"PIB Update Ready" },
-   { HOMEPLUG_AV_HOST_ACTION_FW_PIB_UP_RDY,	"Firmware Upgrade and PIB Update Ready" },
-   { HOMEPLUG_AV_HOST_ACTION_BOOT_LDR,		"Loader (Bootloader)" },
+   { HOMEPLUG_AV_HOST_ACTION_SOFT_LDR,          "Loader (Soft/Bootloader)" },
+   { HOMEPLUG_AV_HOST_ACTION_FW_UPG_RDY,        "Firmware Upgrade Ready" },
+   { HOMEPLUG_AV_HOST_ACTION_PIB_UP_RDY,        "PIB Update Ready" },
+   { HOMEPLUG_AV_HOST_ACTION_FW_PIB_UP_RDY,     "Firmware Upgrade and PIB Update Ready" },
+   { HOMEPLUG_AV_HOST_ACTION_BOOT_LDR,          "Loader (Bootloader)" },
    { 0, NULL }
 };
 
@@ -1074,7 +1086,7 @@ static const value_string homeplug_av_op_attr_report_vals[] = {
    { 0, NULL }
 };
 
-#define HOMEPLUG_AV_TONE_MAP_MASK		0x07
+#define HOMEPLUG_AV_TONE_MAP_MASK               0x07
 
 static const value_string homeplug_av_tone_map_vals[] = {
    { 0x00, "No modulation" },
@@ -1088,7 +1100,7 @@ static const value_string homeplug_av_tone_map_vals[] = {
    { 0, NULL }
 };
 
-#define HOMEPLUG_AV_TONE_MAP_STATUS_MASK	0x03
+#define HOMEPLUG_AV_TONE_MAP_STATUS_MASK        0x03
 
 static const value_string homeplug_av_tone_map_status_vals[] = {
    { 0x00, "Success" },
@@ -1208,63 +1220,57 @@ dissect_homeplug_av_beacon(ptvcursor_t *cursor)
    ptvcursor_pop_subtree(cursor);
 }
 */
-/* Frame control */
+
 static void
-dissect_homeplug_av_frame_control(ptvcursor_t *cursor)
+dissect_homeplug_av_fc_beacon(ptvcursor_t *cursor)
 {
-   proto_item *it;
+        ptvcursor_add(cursor, hf_homeplug_av_bcn_bts, 
+                                        4, ENC_LITTLE_ENDIAN);
+        ptvcursor_add(cursor, hf_homeplug_av_bcn_bto_0, 
+                                        2, ENC_LITTLE_ENDIAN);
+        ptvcursor_add(cursor, hf_homeplug_av_bcn_bto_1, 
+                                        2, ENC_LITTLE_ENDIAN);
+        ptvcursor_add(cursor, hf_homeplug_av_bcn_bto_2, 
+                                        2, ENC_LITTLE_ENDIAN);
+        ptvcursor_add(cursor, hf_homeplug_av_bcn_bto_3, 
+                                        2, ENC_LITTLE_ENDIAN);
+        ptvcursor_add(cursor, hf_homeplug_av_nw_info_fccs_av,
+                                        3, ENC_NA);
+        ptvcursor_add(cursor, hf_homeplug_av_bcn_nid_and_hm, 
+                                        7, ENC_NA);
+        ptvcursor_add(cursor, hf_homeplug_av_bcn_stei, 
+                                        1, ENC_LITTLE_ENDIAN);
+        ptvcursor_add_no_advance(cursor, hf_homeplug_av_bcn_bt, 
+                                        1, ENC_BIG_ENDIAN);
+        ptvcursor_add_no_advance(cursor, hf_homeplug_av_bcn_ucnr, 
+                                        1, ENC_LITTLE_ENDIAN);
+        ptvcursor_add_no_advance(cursor, hf_homeplug_av_bcn_npsm, 
+                                        1, ENC_LITTLE_ENDIAN);
+        ptvcursor_add(cursor, hf_homeplug_av_bcn_num_slots, 
+                                        1, ENC_LITTLE_ENDIAN);
+        ptvcursor_add(cursor, hf_homeplug_av_bcn_slot_usage, 
+                                        1, ENC_LITTLE_ENDIAN);
+        ptvcursor_add_no_advance(cursor, hf_homeplug_av_bcn_slot_id, 
+                                        1, ENC_LITTLE_ENDIAN);
+        ptvcursor_add_no_advance(cursor, hf_homeplug_av_bcn_aclss, 
+                                        1, ENC_LITTLE_ENDIAN);
+        ptvcursor_add_no_advance(cursor, hf_homeplug_av_bcn_hoip, 
+                                        1, ENC_LITTLE_ENDIAN);
+        ptvcursor_add(cursor, hf_homeplug_av_bcn_rtsbf, 
+                                        1, ENC_LITTLE_ENDIAN);
+        ptvcursor_add_no_advance(cursor, hf_homeplug_av_bcn_nm, 
+                                        1, ENC_LITTLE_ENDIAN);
+        ptvcursor_add_no_advance(cursor, hf_homeplug_av_bcn_bm_cap, 
+                                        1, ENC_LITTLE_ENDIAN);
+        ptvcursor_add_no_advance(cursor, hf_homeplug_av_bcn_rsf, 
+                                        1, ENC_LITTLE_ENDIAN);
+        ptvcursor_add(cursor, hf_homeplug_av_bcn_p_level, 
+                                        1, ENC_LITTLE_ENDIAN);
+}
 
-   if (!ptvcursor_tree(cursor))
-      return;
-
-   it = ptvcursor_add_no_advance(cursor, hf_homeplug_av_fc, -1, ENC_NA);
-
-   ptvcursor_push_subtree(cursor, it, ett_homeplug_av_fc);
-   {
-      guint8 del = tvb_get_guint8(ptvcursor_tvbuff(cursor), ptvcursor_current_offset(cursor)); 
-      ptvcursor_add_no_advance(cursor, hf_homeplug_av_nw_info_del_type, 1, ENC_BIG_ENDIAN);
-      ptvcursor_add_no_advance(cursor, hf_homeplug_av_nw_info_access, 1, ENC_BIG_ENDIAN);
-      ptvcursor_add(cursor, hf_homeplug_av_nw_info_snid, 1, ENC_BIG_ENDIAN);
-
-      switch(del & 0x7) {
-	case 0: //beacon
-      ptvcursor_add(cursor, hf_homeplug_av_bcn_bts, 4, ENC_LITTLE_ENDIAN);
-      ptvcursor_add(cursor, hf_homeplug_av_bcn_bto_0, 2, ENC_LITTLE_ENDIAN);
-      ptvcursor_add(cursor, hf_homeplug_av_bcn_bto_1, 2, ENC_LITTLE_ENDIAN);
-      ptvcursor_add(cursor, hf_homeplug_av_bcn_bto_2, 2, ENC_LITTLE_ENDIAN);
-      ptvcursor_add(cursor, hf_homeplug_av_bcn_bto_3, 2, ENC_LITTLE_ENDIAN);
-      ptvcursor_add(cursor, hf_homeplug_av_nw_info_fccs_av, 3, ENC_NA);
-	ptvcursor_add(cursor, hf_homeplug_av_bcn_nid_and_hm, 7, ENC_NA);
-	ptvcursor_add(cursor, hf_homeplug_av_bcn_stei, 
-					1, ENC_LITTLE_ENDIAN);
-	ptvcursor_add_no_advance(cursor, hf_homeplug_av_bcn_bt, 
-					1, ENC_LITTLE_ENDIAN);
-	ptvcursor_add_no_advance(cursor, hf_homeplug_av_bcn_ucnr, 
-					1, ENC_LITTLE_ENDIAN);
-	ptvcursor_add_no_advance(cursor, hf_homeplug_av_bcn_npsm, 
-					1, ENC_LITTLE_ENDIAN);
-	ptvcursor_add(cursor, hf_homeplug_av_bcn_num_slots, 
-					1, ENC_LITTLE_ENDIAN);
-	ptvcursor_add(cursor, hf_homeplug_av_bcn_slot_usage, 
-					1, ENC_LITTLE_ENDIAN);
-	ptvcursor_add_no_advance(cursor, hf_homeplug_av_bcn_slot_id, 
-					1, ENC_LITTLE_ENDIAN);
-	ptvcursor_add_no_advance(cursor, hf_homeplug_av_bcn_aclss, 
-					1, ENC_LITTLE_ENDIAN);
-	ptvcursor_add_no_advance(cursor, hf_homeplug_av_bcn_hoip, 
-					1, ENC_LITTLE_ENDIAN);
-	ptvcursor_add(cursor, hf_homeplug_av_bcn_rtsbf, 
-					1, ENC_LITTLE_ENDIAN);
-	ptvcursor_add_no_advance(cursor, hf_homeplug_av_bcn_nm, 
-					1, ENC_LITTLE_ENDIAN);
-	ptvcursor_add_no_advance(cursor, hf_homeplug_av_bcn_bm_cap, 
-					1, ENC_LITTLE_ENDIAN);
-	ptvcursor_add_no_advance(cursor, hf_homeplug_av_bcn_rsf, 
-					1, ENC_LITTLE_ENDIAN);
-	ptvcursor_add(cursor, hf_homeplug_av_bcn_p_level, 
-					1, ENC_LITTLE_ENDIAN);
-	break;
-	case 1: //start of frame
+static void
+dissect_homeplug_av_fc_sof(ptvcursor_t *cursor)
+{
       ptvcursor_add(cursor, hf_homeplug_av_fc_stei, 1, ENC_BIG_ENDIAN);
       ptvcursor_add(cursor, hf_homeplug_av_fc_dtei, 1, ENC_BIG_ENDIAN);
       ptvcursor_add(cursor, hf_homeplug_av_fc_lid, 1, ENC_BIG_ENDIAN);
@@ -1279,8 +1285,8 @@ dissect_homeplug_av_frame_control(ptvcursor_t *cursor)
       ptvcursor_add_no_advance(cursor, hf_homeplug_av_fc_num_sym, 1, ENC_BIG_ENDIAN);
       ptvcursor_add(cursor, hf_homeplug_av_fc_tmi_av, 1, ENC_BIG_ENDIAN);
       ptvcursor_add_no_advance(cursor, hf_homeplug_av_fc_fl_av, 2, ENC_LITTLE_ENDIAN);
-      ptvcursor_add_no_advance(cursor, hf_homeplug_av_fc_mpdu_cnt, 2, ENC_BIG_ENDIAN);
-      ptvcursor_add(cursor, hf_homeplug_av_fc_burst_cnt, 2, ENC_BIG_ENDIAN);
+      ptvcursor_add_no_advance(cursor, hf_homeplug_av_fc_mpdu_cnt, 2, ENC_LITTLE_ENDIAN);
+      ptvcursor_add(cursor, hf_homeplug_av_fc_burst_cnt, 2, ENC_LITTLE_ENDIAN);
       ptvcursor_add_no_advance(cursor, hf_homeplug_av_fc_bbf, 1, ENC_BIG_ENDIAN);
       ptvcursor_add_no_advance(cursor, hf_homeplug_av_fc_mrtfl, 1, ENC_BIG_ENDIAN);
       ptvcursor_add_no_advance(cursor, hf_homeplug_av_fc_dcppcf, 1, ENC_BIG_ENDIAN);
@@ -1294,15 +1300,74 @@ dissect_homeplug_av_frame_control(ptvcursor_t *cursor)
       ptvcursor_add_no_advance(cursor, hf_homeplug_av_fc_mfs_rsp_data, 1, ENC_BIG_ENDIAN);
       ptvcursor_add(cursor, hf_homeplug_av_fc_bm_sacki, 1, ENC_BIG_ENDIAN);
       ptvcursor_add(cursor, hf_homeplug_av_nw_info_fccs_av, 3, ENC_NA);
-     	break; 
-	case 2: //selective acknowledgment
-	case 3: //request to send/clear to send
-	case 4: //sound
-	case 5: //reverse start of frame
-	case 6: //reserved
-	case 7: //reserved
-	default: break;
-      }	
+}
+
+static void
+dissect_homeplug_av_fc_sack(ptvcursor_t *cursor)
+{
+        if (cursor) {}
+}
+
+static void
+dissect_homeplug_av_fc_rtscts(ptvcursor_t *cursor)
+{
+        if (cursor) {}
+}
+
+static void
+dissect_homeplug_av_fc_sound(ptvcursor_t *cursor)
+{
+        if (cursor) {}
+}
+
+static void
+dissect_homeplug_av_fc_rsof(ptvcursor_t *cursor)
+{
+        if (cursor) {}
+}
+
+/* Frame control */
+static void
+dissect_homeplug_av_frame_control(ptvcursor_t *cursor)
+{
+   proto_item *it;
+
+   if (!ptvcursor_tree(cursor))
+      return;
+
+   
+   it = ptvcursor_add_no_advance(cursor, hf_homeplug_av_fc, -1, ENC_NA);
+
+   ptvcursor_push_subtree(cursor, it, ett_homeplug_av_fc);
+   {
+      guint8 del = tvb_get_guint8(ptvcursor_tvbuff(cursor), ptvcursor_current_offset(cursor)); 
+      ptvcursor_add_no_advance(cursor, hf_homeplug_av_nw_info_del_type, 1, ENC_BIG_ENDIAN);
+      ptvcursor_add_no_advance(cursor, hf_homeplug_av_nw_info_access, 1, ENC_BIG_ENDIAN);
+      ptvcursor_add(cursor, hf_homeplug_av_nw_info_snid, 1, ENC_BIG_ENDIAN);
+
+      switch(del & 0x7) {
+        case 0: //beacon
+                dissect_homeplug_av_fc_beacon(cursor);
+                break;
+        case 1: //start of frame
+                dissect_homeplug_av_fc_sof(cursor);
+                break; 
+        case 2: //selective acknowledgment
+                dissect_homeplug_av_fc_sack(cursor);
+                break;
+        case 3: //request to send/clear to send
+                dissect_homeplug_av_fc_rtscts(cursor);
+                break;
+        case 4: //sound
+                dissect_homeplug_av_fc_sound(cursor);
+                break;
+        case 5: //reverse start of frame
+                dissect_homeplug_av_fc_rsof(cursor);
+                break;
+        case 6: //reserved
+        case 7: //reserved
+        default: break;
+      } 
    }
    ptvcursor_pop_subtree(cursor);
 }
@@ -1430,7 +1495,7 @@ dissect_homeplug_av_cc_disc_list_cnf(ptvcursor_t *cursor)
       }
 
       num_nets = tvb_get_guint8(ptvcursor_tvbuff(cursor),
-				ptvcursor_current_offset(cursor));
+                                ptvcursor_current_offset(cursor));
       ptvcursor_add(cursor, hf_homeplug_av_cc_disc_list_net_cnt, 1, ENC_BIG_ENDIAN);
 
       for (net = 0; net < num_nets; net++) {
@@ -1559,7 +1624,7 @@ dissect_homeplug_av_cm_get_key_req(ptvcursor_t *cursor)
 
       ptvcursor_add(cursor, hf_homeplug_av_cm_get_key_req_type, 1, ENC_BIG_ENDIAN);
       key_type = tvb_get_guint8(ptvcursor_tvbuff(cursor),
-				ptvcursor_current_offset(cursor));
+                                ptvcursor_current_offset(cursor));
       ptvcursor_add(cursor, hf_homeplug_av_nw_info_key_type, 1, ENC_BIG_ENDIAN);
       ptvcursor_add(cursor, hf_homeplug_av_nw_info_nid, 7, ENC_NA);
       ptvcursor_add(cursor, hf_homeplug_av_nw_info_my_nonce, 4, ENC_LITTLE_ENDIAN);
@@ -2732,7 +2797,7 @@ dissect_homeplug_av_tone_map_cnf(ptvcursor_t *cursor)
       ptvcursor_add(cursor, hf_homeplug_av_tone_map_cnf_slot, 1, ENC_BIG_ENDIAN);
       ptvcursor_add(cursor, hf_homeplug_av_tone_map_cnf_num_tms, 1, ENC_BIG_ENDIAN);
       num_act_carriers = tvb_get_letohs(ptvcursor_tvbuff(cursor),
-				ptvcursor_current_offset(cursor));
+                                ptvcursor_current_offset(cursor));
       ptvcursor_add(cursor, hf_homeplug_av_tone_map_cnf_num_act, 2, ENC_LITTLE_ENDIAN);
 
       if (num_act_carriers) {
@@ -2740,7 +2805,7 @@ dissect_homeplug_av_tone_map_cnf(ptvcursor_t *cursor)
 
           /* check if number of carriers is odd */
          if (num_act_carriers & 1)
- 	    max_carriers += 1;
+            max_carriers += 1;
 
          for (i = 0; i < max_carriers; i++) {
             dissect_homeplug_av_tone_map_carrier(cursor);
@@ -2964,1043 +3029,1043 @@ proto_register_homeplug_av(void)
    static hf_register_info hf[] = {
       { &hf_homeplug_av_reserved,
         { "Reserved", "homeplug_av.reserved",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       /* MM Header */
       { &hf_homeplug_av_mmhdr,
         { "MAC Management Header", "homeplug_av.mmhdr",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_mmhdr_mmver,
         { "Version", "homeplug_av.mmhdr.mmver",
-	  FT_UINT8, BASE_DEC, VALS(homeplug_av_mmver_vals), HOMEPLUG_AV_MMVER_MASK, NULL, HFILL }
+          FT_UINT8, BASE_DEC, VALS(homeplug_av_mmver_vals), HOMEPLUG_AV_MMVER_MASK, NULL, HFILL }
       },
       { &hf_homeplug_av_mmhdr_mmtype,
         { "Type", "homeplug_av.mmhdr.mmtype",
-	  FT_UINT16, BASE_HEX | BASE_EXT_STRING, &homeplug_av_mmtype_vals_ext, 0x0000, NULL, HFILL }
+          FT_UINT16, BASE_HEX | BASE_EXT_STRING, &homeplug_av_mmtype_vals_ext, 0x0000, NULL, HFILL }
       },
       { &hf_homeplug_av_mmhdr_mmtype_lsb,
         { "LSB", "homeplug_av.mmhdr.mmtype.lsb",
-	  FT_UINT16, BASE_HEX, VALS(homeplug_av_mmtype_lsb_vals), HOMEPLUG_AV_MMTYPE_LSB_MASK, NULL, HFILL }
+          FT_UINT16, BASE_HEX, VALS(homeplug_av_mmtype_lsb_vals), HOMEPLUG_AV_MMTYPE_LSB_MASK, NULL, HFILL }
       },
       { &hf_homeplug_av_mmhdr_mmtype_msb,
         { "MSB", "homeplug_av.mmhdr.mmtype.msb",
-	  FT_UINT16, BASE_HEX, VALS(homeplug_av_mmtype_msb_vals), HOMEPLUG_AV_MMTYPE_MSB_MASK, "Reserved", HFILL },
+          FT_UINT16, BASE_HEX, VALS(homeplug_av_mmtype_msb_vals), HOMEPLUG_AV_MMTYPE_MSB_MASK, "Reserved", HFILL },
       },
       /* Public MME */
       { &hf_homeplug_av_public,
         { "Public MME", "homeplug_av.public",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_public_frag_count,
         { "Fragment count", "homeplug_av.public.frag_count",
-	  FT_UINT8, BASE_DEC, NULL, HOMEPLUG_AV_PUBLIC_FRAG_COUNT_MASK, NULL, HFILL }
+          FT_UINT8, BASE_DEC, NULL, HOMEPLUG_AV_PUBLIC_FRAG_COUNT_MASK, NULL, HFILL }
       },
       { &hf_homeplug_av_public_frag_index,
         { "Fragment index", "homeplug_av.public.frag_index",
-	  FT_UINT8, BASE_DEC, NULL, HOMEPLUG_AV_PUBLIC_FRAG_INDEX_MASK, NULL, HFILL }
+          FT_UINT8, BASE_DEC, NULL, HOMEPLUG_AV_PUBLIC_FRAG_INDEX_MASK, NULL, HFILL }
       },
       { &hf_homeplug_av_public_frag_seqnum,
         { "Fragment Sequence number", "homeplug_av.public.frag_seqnum",
-	  FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       /* Frame Control */
       { &hf_homeplug_av_fc,
         { "Frame control", "homeplug_av.fc",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_fc_stei,
         { "Source Terminal Equipment Identifier", "homeplug_av.fc.snei",
-	  FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_fc_dtei,
         { "Destination Terminal Equipment Identifier", "homeplug_av.fc.dtei",
-	  FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_fc_lid,
         { "Link ID", "homeplug_av.fc.lid",
-	  FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_fc_cfs,
         { "Contention free session", "homeplug_av.fc.cfs",
-	  FT_BOOLEAN, 8, NULL, 0x01, NULL, HFILL }
+          FT_BOOLEAN, 8, NULL, 0x01, NULL, HFILL }
       },
       { &hf_homeplug_av_fc_bdf,
         { "Beacon detect flag", "homeplug_av.fc.bdf",
-	  FT_BOOLEAN, 8, NULL, 0x02, NULL, HFILL }
+          FT_BOOLEAN, 8, NULL, 0x02, NULL, HFILL }
       },
       { &hf_homeplug_av_fc_hp10df,
         { "Homeplug AV version 1.0", "homeplug_av.fc.hp10df",
-	  FT_BOOLEAN, 8, NULL, 0x04, NULL, HFILL }
+          FT_BOOLEAN, 8, NULL, 0x04, NULL, HFILL }
       },
       { &hf_homeplug_av_fc_hp11df,
         { "Homeplug AV version 1.1", "homeplug_av.fc.hp11df",
-	  FT_BOOLEAN, 8, NULL, 0x08, NULL, HFILL }
+          FT_BOOLEAN, 8, NULL, 0x08, NULL, HFILL }
       },
       { &hf_homeplug_av_fc_ppb,
         { "Pending PHY blocks", "homeplug_av.fc.ppb",
-	  FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_fc_ble,
         { "Bit loading estimate", "homeplug_av.fc.ble",
-	  FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_fc_pbsz,
         { "PHY block size", "homeplug_av.fc.pbsz",
-	  FT_BOOLEAN, 8, NULL, 0x01, NULL, HFILL }
+          FT_BOOLEAN, 8, NULL, 0x01, NULL, HFILL }
       },
       { &hf_homeplug_av_fc_num_sym,
         { "Number of symbols", "homeplug_av.fc.num_sym",
-	  FT_UINT8, BASE_DEC, NULL, 0x06, NULL, HFILL }
+          FT_UINT8, BASE_DEC, NULL, 0x06, NULL, HFILL }
       },
       { &hf_homeplug_av_fc_tmi_av,
         { "Tonemap index", "homeplug_av.fc.tmi_av",
-	  FT_UINT8, BASE_DEC, NULL, 0xF8, NULL, HFILL }
+          FT_UINT8, BASE_DEC, NULL, 0xF8, NULL, HFILL }
       },
       { &hf_homeplug_av_fc_fl_av,
         { "Frame length", "homeplug_av.fc.fl_av",
-	  FT_UINT16, BASE_DEC, NULL, 0x0FFF, NULL, HFILL }
+          FT_UINT16, BASE_DEC, NULL, 0x0FFF, NULL, HFILL }
       },
       { &hf_homeplug_av_fc_mpdu_cnt,
         { "MPDU count", "homeplug_av.fc.mpdu_cnt",
-	  FT_UINT16, BASE_DEC, NULL, 0x3000, NULL, HFILL }
+          FT_UINT16, BASE_DEC, NULL, 0x3000, NULL, HFILL }
       },
       { &hf_homeplug_av_fc_burst_cnt,
         { "Burst count", "homeplug_av.fc.burst_cnt",
-	  FT_UINT16, BASE_DEC, NULL, 0xC000, NULL, HFILL }
+          FT_UINT16, BASE_DEC, NULL, 0xC000, NULL, HFILL }
       },
       { &hf_homeplug_av_fc_bbf,
-	{ "Bidirectional Burst Flag", "homeplug_av.fc.bbf",
-	  FT_BOOLEAN, 8, NULL, 1, NULL, HFILL }
+        { "Bidirectional Burst Flag", "homeplug_av.fc.bbf",
+          FT_BOOLEAN, 8, NULL, 1, NULL, HFILL }
       },
       { &hf_homeplug_av_fc_mrtfl,
         { "Max Reverse Transmission Frame Length", "homeplug_av.fc.mrtfl",
-	  FT_UINT8, BASE_DEC, NULL, 0x1E, NULL, HFILL }
+          FT_UINT8, BASE_DEC, NULL, 0x1E, NULL, HFILL }
       },
       { &hf_homeplug_av_fc_clst,
         { "Convergence layer SAP type", "homeplug_av.fc.clst",
-	  FT_UINT16, BASE_HEX, NULL, 0x07, NULL, HFILL }
+          FT_UINT16, BASE_HEX, NULL, 0x07, NULL, HFILL }
       },
       { &hf_homeplug_av_fc_rg_len,
         { "Reverse grant length", "homeplug_av.fc.rg_len",
-	  FT_UINT16, BASE_DEC, NULL, 0x1F8, NULL, HFILL }
+          FT_UINT16, BASE_DEC, NULL, 0x1F8, NULL, HFILL }
       },
       { &hf_homeplug_av_fc_mfs_cmd_mgmt,
         { "Management MAC frame stream command", "homeplug_av.fc.mfs_cmd_mgmt",
-	  FT_UINT8, BASE_DEC, NULL, 0x1C, NULL, HFILL }
+          FT_UINT8, BASE_DEC, NULL, 0x1C, NULL, HFILL }
       },
       { &hf_homeplug_av_fc_mfs_cmd_data,
         { "Data MAC frame stream command", "homeplug_av.fc.mfs_cmd_data",
-	  FT_UINT8, BASE_DEC, NULL, 0xE0, NULL, HFILL }
+          FT_UINT8, BASE_DEC, NULL, 0xE0, NULL, HFILL }
       },
       { &hf_homeplug_av_fc_mfs_rsp_mgmt,
-	{ "Management MAC frame stream response", "homeplug_av.fc.mfs_rsp_mgmt",
-	  FT_UINT8, BASE_DEC, NULL, 0x03, NULL, HFILL }
+        { "Management MAC frame stream response", "homeplug_av.fc.mfs_rsp_mgmt",
+          FT_UINT8, BASE_DEC, NULL, 0x03, NULL, HFILL }
       },
       { &hf_homeplug_av_fc_mfs_rsp_data,
-	{ "Data MAC frame stream response", "homeplug_av.fc.mfs_rsp_data",
-	  FT_UINT8, BASE_DEC, NULL, 0x0C, NULL, HFILL }
+        { "Data MAC frame stream response", "homeplug_av.fc.mfs_rsp_data",
+          FT_UINT8, BASE_DEC, NULL, 0x0C, NULL, HFILL }
       },
       { &hf_homeplug_av_fc_bm_sacki,
-	{ " Bit map SACK info", "homeplug_av.fc.bm_sacki",
-	  FT_UINT8, BASE_DEC, NULL, 0xF0, NULL, HFILL }
+        { " Bit map SACK info", "homeplug_av.fc.bm_sacki",
+          FT_UINT8, BASE_DEC, NULL, 0xF0, NULL, HFILL }
       },
       { &hf_homeplug_av_fc_rsr,
-	{ "Request SACK retransmission", "homeplug_av.fc.rsr",	  
-	  FT_BOOLEAN, 8, NULL, 0x1,  NULL, HFILL }
+        { "Request SACK retransmission", "homeplug_av.fc.rsr",    
+          FT_BOOLEAN, 8, NULL, 0x1,  NULL, HFILL }
       },
       { &hf_homeplug_av_fc_mst,
-	{ "MAC SAP type", "homeplug_av.fc.mst",
-	  FT_BOOLEAN, 8, NULL, 0x02, NULL, HFILL }
+        { "MAC SAP type", "homeplug_av.fc.mst",
+          FT_BOOLEAN, 8, NULL, 0x02, NULL, HFILL }
       },
       { &hf_homeplug_av_fc_mcf,
         { "Multicast", "homeplug_av.fc.mcf",
-	  FT_BOOLEAN, 8, NULL, 0x40, NULL, HFILL }
+          FT_BOOLEAN, 8, NULL, 0x40, NULL, HFILL }
       },
       { &hf_homeplug_av_fc_dcppcf,
         { "Different CP PHY clock", "homeplug_av.fc.dcppcf",
-	  FT_BOOLEAN, 8, NULL, 0x20, NULL, HFILL }
+          FT_BOOLEAN, 8, NULL, 0x20, NULL, HFILL }
       },
       { &hf_homeplug_av_fc_mnbf,
         { "Multinetwork broadcast", "homeplug_av.fc.mnbf",
-	  FT_BOOLEAN, 8, NULL, 0x80, NULL, HFILL }
+          FT_BOOLEAN, 8, NULL, 0x80, NULL, HFILL }
       },
       /* Beacon body */
       { &hf_homeplug_av_bcn,
         { "Beacon", "homeplug_av.bcn",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_bcn_bts,
         { "Beacon timestamp", "homeplug_av.bcn.bts",
-	  FT_UINT32, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT32, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_bcn_bto_0,
         { "Beacon transmission offset 0", "homeplug_av.bcn.bto_0",
-	  FT_UINT16, BASE_HEX, NULL, 0x00, NULL, HFILL }
+          FT_UINT16, BASE_HEX, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_bcn_bto_1,
         { "Beacon transmission offset 1", "homeplug_av.bcn.bto_1",
-	  FT_UINT16, BASE_HEX, NULL, 0x00, NULL, HFILL }
+          FT_UINT16, BASE_HEX, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_bcn_bto_2,
         { "Beacon transmission offset 2", "homeplug_av.bcn.bto_2",
-	  FT_UINT16, BASE_HEX, NULL, 0x00, NULL, HFILL }
+          FT_UINT16, BASE_HEX, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_bcn_bto_3,
         { "Beacon transmission offset 3", "homeplug_av.bcn.bto_3",
-	  FT_UINT16, BASE_HEX, NULL, 0x00, NULL, HFILL }
+          FT_UINT16, BASE_HEX, NULL, 0x00, NULL, HFILL }
       },
-	{ &hf_homeplug_av_bcn_nid_and_hm,
-		{ "Network Identifier and Hybrid Mode",
-		  "homeplug_av.bcn.nid_and_hm",
-		  FT_BYTES, BASE_NONE, NULL, 0x00, NULL, HFILL }
-	},
-	{ &hf_homeplug_av_bcn_stei,
-		{ "Source terminal equipment identifier",
-		  "homeplug_av.bcn.stei",
-		  FT_UINT8, BASE_HEX, NULL, 0x00, NULL, HFILL }
-	},
-	{ &hf_homeplug_av_bcn_bt,
-		{ "Beacon type",
-		  "homeplug_av.bcn.bt",
-		  FT_UINT8, BASE_HEX, NULL, 0x07, NULL, HFILL }
-	},
-	{ &hf_homeplug_av_bcn_ucnr,
-		{ "Uncoordinated Networks Reported",
-		  "homeplug_av.bcn.ucnr",
-		  FT_BOOLEAN, 8, NULL, 0x08, NULL, HFILL }
-	},
-	{ &hf_homeplug_av_bcn_npsm,
-		{ "Network power saving mode",
-		  "homeplug_av.bcn.npsm",
-		  FT_BOOLEAN, 8, NULL, 0x10, NULL, HFILL }
-	},
-	{ &hf_homeplug_av_bcn_num_slots,
-		{ "Number of Beacon Slots",
-		  "homeplug_av.bcn.num_slots",
-		  FT_UINT8, BASE_HEX, NULL, 0xC0, NULL, HFILL }
-	},
-	{ &hf_homeplug_av_bcn_slot_usage,
-		{ "Beacon Slot Usage",
-		  "homeplug_av.bcn.slot_usage",
-		  FT_UINT8, BASE_HEX, NULL, 0x00, NULL, HFILL }
-	},
-	{ &hf_homeplug_av_bcn_slot_id,
-		{ "Beacon Slot ID",
-		  "homeplug_av.bcn.slot_id",
-		  FT_UINT8, BASE_HEX, NULL, 0x07, NULL, HFILL }
-	},
-	{ &hf_homeplug_av_bcn_aclss,
-		{ "AC Line Cycle Synchronization Status",
-		  "homeplug_av.bcn.aclss",
-		  FT_UINT8, BASE_HEX, NULL, 0x38, NULL, HFILL }
-	},
-	{ &hf_homeplug_av_bcn_hoip,
-		{ "Handover-In-Progress",
-		  "homeplug_av.bcn.hoip",
-		  FT_BOOLEAN, 8, NULL, 0x40, NULL, HFILL }
-	},
-	{ &hf_homeplug_av_bcn_rtsbf,
-		{ "RTS Broadcast Flag",
-		  "homeplug_av.bcn.rtsbf",
-		  FT_BOOLEAN, 8, NULL, 0x80, NULL, HFILL }
-	},
-	{ &hf_homeplug_av_bcn_nm,
-		{ "Network Mode",
-		  "homeplug_av.bcn.nm",
-		  FT_UINT8, BASE_HEX, NULL, 0x03, NULL, HFILL }
-	},
-	{ &hf_homeplug_av_bcn_bm_cap,
-		{ "BM Capability",
-		  "homeplug_av.bcn.bm_cap",
-		  FT_UINT8, BASE_HEX, NULL, 0x0C, NULL, HFILL }
-	},
-	{ &hf_homeplug_av_bcn_rsf,
-		{ "Reusable SNID Flag",
-		  "homeplug_av.bcn.rsf",
-		  FT_BOOLEAN, 8, NULL, 0x10, NULL, HFILL }
-	},
-	{ &hf_homeplug_av_bcn_p_level,
-		{ "Proxy Level",
-		  "homeplug_av.bcn.plevel",
-		  FT_UINT8, BASE_HEX, NULL, 0xE0, NULL, HFILL }
-	},
-	{ &hf_homeplug_av_bcn_bmi,
-		{ "Beacon Management Information",
-		  "homeplug_av.bcn.bmi",
-		  FT_BYTES, BASE_NONE, NULL, 0x00, NULL, HFILL }
-	},
-	{ &hf_homeplug_av_bcn_opad,
-		{ "Octet Pad",
-		  "homeplug_av.bcn.nid_and_hm",
-		  FT_BYTES, BASE_NONE, NULL, 0x00, NULL, HFILL }
-	},
-	{ &hf_homeplug_av_bcn_bpcs,
-		{ "Beacon Payload Check Sequence",
-		  "homeplug_av.bcn.bpcs",
-		  FT_UINT32, BASE_HEX, NULL, 0x00, NULL, HFILL }
-	},
+        { &hf_homeplug_av_bcn_nid_and_hm,
+                { "Network Identifier and Hybrid Mode",
+                  "homeplug_av.bcn.nid_and_hm",
+                  FT_BYTES, BASE_NONE, NULL, 0x00, NULL, HFILL }
+        },
+        { &hf_homeplug_av_bcn_stei,
+                { "Source terminal equipment identifier",
+                  "homeplug_av.bcn.stei",
+                  FT_UINT8, BASE_HEX, NULL, 0x00, NULL, HFILL }
+        },
+        { &hf_homeplug_av_bcn_bt,
+                { "Beacon type",
+                  "homeplug_av.bcn.bt",
+                  FT_UINT8, BASE_HEX, NULL, 0x07, NULL, HFILL }
+        },
+        { &hf_homeplug_av_bcn_ucnr,
+                { "Uncoordinated Networks Reported",
+                  "homeplug_av.bcn.ucnr",
+                  FT_BOOLEAN, 8, NULL, 0x08, NULL, HFILL }
+        },
+        { &hf_homeplug_av_bcn_npsm,
+                { "Network power saving mode",
+                  "homeplug_av.bcn.npsm",
+                  FT_BOOLEAN, 8, NULL, 0x10, NULL, HFILL }
+        },
+        { &hf_homeplug_av_bcn_num_slots,
+                { "Number of Beacon Slots",
+                  "homeplug_av.bcn.num_slots",
+                  FT_UINT8, BASE_HEX, NULL, 0xC0, NULL, HFILL }
+        },
+        { &hf_homeplug_av_bcn_slot_usage,
+                { "Beacon Slot Usage",
+                  "homeplug_av.bcn.slot_usage",
+                  FT_UINT8, BASE_HEX, NULL, 0x00, NULL, HFILL }
+        },
+        { &hf_homeplug_av_bcn_slot_id,
+                { "Beacon Slot ID",
+                  "homeplug_av.bcn.slot_id",
+                  FT_UINT8, BASE_HEX, NULL, 0x07, NULL, HFILL }
+        },
+        { &hf_homeplug_av_bcn_aclss,
+                { "AC Line Cycle Synchronization Status",
+                  "homeplug_av.bcn.aclss",
+                  FT_UINT8, BASE_HEX, NULL, 0x38, NULL, HFILL }
+        },
+        { &hf_homeplug_av_bcn_hoip,
+                { "Handover-In-Progress",
+                  "homeplug_av.bcn.hoip",
+                  FT_BOOLEAN, 8, NULL, 0x40, NULL, HFILL }
+        },
+        { &hf_homeplug_av_bcn_rtsbf,
+                { "RTS Broadcast Flag",
+                  "homeplug_av.bcn.rtsbf",
+                  FT_BOOLEAN, 8, NULL, 0x80, NULL, HFILL }
+        },
+        { &hf_homeplug_av_bcn_nm,
+                { "Network Mode",
+                  "homeplug_av.bcn.nm",
+                  FT_UINT8, BASE_HEX, NULL, 0x03, NULL, HFILL }
+        },
+        { &hf_homeplug_av_bcn_bm_cap,
+                { "BM Capability",
+                  "homeplug_av.bcn.bm_cap",
+                  FT_UINT8, BASE_HEX, NULL, 0x0C, NULL, HFILL }
+        },
+        { &hf_homeplug_av_bcn_rsf,
+                { "Reusable SNID Flag",
+                  "homeplug_av.bcn.rsf",
+                  FT_BOOLEAN, 8, NULL, 0x10, NULL, HFILL }
+        },
+        { &hf_homeplug_av_bcn_p_level,
+                { "Proxy Level",
+                  "homeplug_av.bcn.plevel",
+                  FT_UINT8, BASE_HEX, NULL, 0xE0, NULL, HFILL }
+        },
+        { &hf_homeplug_av_bcn_bmi,
+                { "Beacon Management Information",
+                  "homeplug_av.bcn.bmi",
+                  FT_BYTES, BASE_NONE, NULL, 0x00, NULL, HFILL }
+        },
+        { &hf_homeplug_av_bcn_opad,
+                { "Octet Pad",
+                  "homeplug_av.bcn.nid_and_hm",
+                  FT_BYTES, BASE_NONE, NULL, 0x00, NULL, HFILL }
+        },
+        { &hf_homeplug_av_bcn_bpcs,
+                { "Beacon Payload Check Sequence",
+                  "homeplug_av.bcn.bpcs",
+                  FT_UINT32, BASE_HEX, NULL, 0x00, NULL, HFILL }
+        },
       /* Central Cooeurdination Discovery List Confirmation */
       { &hf_homeplug_av_cc_disc_list_cnf,
         { "Central Coordination Discovery List Confirmation", "homeplug_av.cc_disc_list_cnf",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       /* Station informations */
       { &hf_homeplug_av_cc_disc_list_sta_cnt,
         { "Station count", "homeplug_av.cc_disc_list_cnf.sta_cnt",
-	  FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_cc_sta_info,
         { "Station information", "homeplug_av.cc_disc_list_cnf.sta_info",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_cc_sta_info_mac,
         { "MAC address", "homeplug_av.cc_disc_list_cnf.sta_info.mac",
-	  FT_ETHER, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_ETHER, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_cc_sta_info_tei,
         { "Terminal Equipment Identifier", "homeplug_av.cc_disc_list_cnf.sta_info.tei",
-	  FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_cc_sta_info_same_net,
         { "Network type", "homeplug_av.cc_disc_list_cnf.sta_info.same_net",
-	  FT_UINT8, BASE_HEX, VALS(homeplug_av_cc_sta_net_type_vals), HOMEPLUG_AV_CC_STA_NET_MASK, NULL, HFILL }
+          FT_UINT8, BASE_HEX, VALS(homeplug_av_cc_sta_net_type_vals), HOMEPLUG_AV_CC_STA_NET_MASK, NULL, HFILL }
       },
       { &hf_homeplug_av_cc_sta_info_sig_level,
         { "Signal level", "homeplug_av.cc_disc_list_cnf.sta_info.sig_level",
-	  FT_UINT8, BASE_HEX | BASE_EXT_STRING, &homeplug_av_sig_level_vals_ext, 0x00, "Reserved", HFILL }
+          FT_UINT8, BASE_HEX | BASE_EXT_STRING, &homeplug_av_sig_level_vals_ext, 0x00, "Reserved", HFILL }
       },
       { &hf_homeplug_av_cc_sta_info_avg_ble,
         { "Average BLE", "homeplug_av.cc_disc_list_cnf.sta_info.avg_ble",
-	  FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       /* Network infos */
       { &hf_homeplug_av_cc_disc_list_net_cnt,
         { "Network count", "homeplug_av.cc_disc_list_cnf.net_cnt",
-	  FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_cc_net_info,
         { "Network information", "homeplug_av.cc_disc_list_cnf.net_info",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_cc_net_info_hyb_mode,
         { "Hybrid mode", "homeplug_av.cc_disc_list_cnf.net_info.hyb_mode",
-	  FT_UINT8, BASE_HEX, NULL, 0x00, NULL, HFILL }
+          FT_UINT8, BASE_HEX, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_cc_net_info_bcn_slots,
         { "Beacon slots", "homeplug_av.cc_disc_list_cnf.net_info.bcn_slots",
-	  FT_UINT8, BASE_DEC, NULL, 0x08, "Reserved", HFILL }
+          FT_UINT8, BASE_DEC, NULL, 0x08, "Reserved", HFILL }
       },
       { &hf_homeplug_av_cc_net_info_cco_sts,
         { "Coordinating status", "homeplug_av.cc_disc_list_cnf.net_info.cco_status",
-	  FT_UINT8, BASE_HEX, VALS(homeplug_av_cco_status_vals), HOMEPLUG_AV_CCO_STATUS_MASK, "Unknown", HFILL }
+          FT_UINT8, BASE_HEX, VALS(homeplug_av_cco_status_vals), HOMEPLUG_AV_CCO_STATUS_MASK, "Unknown", HFILL }
       },
       { &hf_homeplug_av_cc_net_info_bcn_ofs,
         { "Beacon offset", "homeplug_av.cc_disc_list_cnf.net_info.bcn_ofs",
-	  FT_UINT16, BASE_HEX, NULL, 0x00, NULL, HFILL }
+          FT_UINT16, BASE_HEX, NULL, 0x00, NULL, HFILL }
       },
       /* Shared encrypted related fields */
       { &hf_homeplug_av_nw_info_del_type,
         { "Delimiter type", "homeplug_av.nw_info.del_type",
-	  FT_UINT8, BASE_HEX, NULL, 0x07, NULL, HFILL }
+          FT_UINT8, BASE_HEX, VALS(homeplug_av_nw_info_del_vals), 0x07, NULL, HFILL }
       },
       { &hf_homeplug_av_nw_info_fccs_av,
         { "Frame control check sequence", "homeplug_av.nw_info.fccs_av",
-	  FT_BYTES, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_BYTES, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_nw_info_peks,
         { "Payload Encryption Key Select", "homeplug_av.nw_info.peks",
-	  FT_UINT8, BASE_HEX | BASE_EXT_STRING, &homeplug_av_peks_vals_ext, HOMEPLUG_AV_PEKS_MASK, NULL, HFILL }
+          FT_UINT8, BASE_HEX | BASE_EXT_STRING, &homeplug_av_peks_vals_ext, HOMEPLUG_AV_PEKS_MASK, NULL, HFILL }
       },
       { &hf_homeplug_av_nw_info_pid,
         { "Protocol ID", "homeplug_av.nw_info.pid",
-	  FT_UINT8, BASE_HEX, VALS(homeplug_av_pid_vals), HOMEPLUG_AV_PID_MASK, "Reserved", HFILL }
+          FT_UINT8, BASE_HEX, VALS(homeplug_av_pid_vals), HOMEPLUG_AV_PID_MASK, "Reserved", HFILL }
       },
       { &hf_homeplug_av_nw_info_prn,
         { "Protocol run number", "homeplug_av.nw_info.prn",
-	  FT_UINT16, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT16, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_nw_info_pmn,
         { "Protocol message number", "homeplug_av.nw_info.pmn",
-	  FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_nw_info_my_nonce,
         { "My nonce", "homeplug_av.nw_info.my_nonce",
-	  FT_UINT32, BASE_HEX, NULL, 0x00, NULL, HFILL }
+          FT_UINT32, BASE_HEX, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_nw_info_your_nonce,
         { "Your nonce", "homeplug_av.nw_info.your_nonce",
-	  FT_UINT32, BASE_HEX, NULL, 0x00, NULL, HFILL }
+          FT_UINT32, BASE_HEX, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_nw_info_cco_cap,
         { "CCo capabilities", "homeplug_av.nw_info.cco_cap",
-	  FT_UINT8, BASE_HEX, VALS(homeplug_av_nw_info_role_vals), HOMEPLUG_AV_NW_INFO_ROLE_MASK, NULL, HFILL }
+          FT_UINT8, BASE_HEX, VALS(homeplug_av_nw_info_role_vals), HOMEPLUG_AV_NW_INFO_ROLE_MASK, NULL, HFILL }
       },
       { &hf_homeplug_av_nw_info_key_type,
         { "Key type", "homeplug_av.nw_info.key_type",
-	  FT_UINT8, BASE_HEX, VALS(homeplug_av_key_type_vals), HOMEPLUG_AV_KEY_TYPE_MASK, NULL, HFILL }
+          FT_UINT8, BASE_HEX, VALS(homeplug_av_key_type_vals), HOMEPLUG_AV_KEY_TYPE_MASK, NULL, HFILL }
       },
       /* Encrypted Payload Indicate */
       { &hf_homeplug_av_cm_enc_pld_ind,
         { "Encrypted Payload Indicate", "homeplug_av.cm_enc_pld_ind",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_cm_enc_pld_ind_avlns,
         { "AVLN status", "homeplug_av.cm_enc_pld_ind.avlns",
-	  FT_UINT8, BASE_HEX, VALS(homeplug_av_avln_status_vals), HOMEPLUG_AV_AVLN_STATUS_MASK, "Reserved", HFILL }
+          FT_UINT8, BASE_HEX, VALS(homeplug_av_avln_status_vals), HOMEPLUG_AV_AVLN_STATUS_MASK, "Reserved", HFILL }
       },
       { &hf_homeplug_av_cm_enc_pld_ind_iv,
         { "Initialization vector", "homeplug_av.cm_enc_pld_ind.iv",
-	  FT_BYTES, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_BYTES, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_cm_enc_pld_ind_uuid,
         { "UUID", "homeplug_av.cm_enc_pld_ind.uuid",
-	  FT_GUID, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_GUID, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_cm_enc_pld_ind_len,
         { "Length", "homeplug_av.cm_enc_pld_ind.len",
-	  FT_UINT16, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT16, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_cm_enc_pld_ind_pld,
         { "Encrypted payload", "homeplug_av.cm_enc_pld_ind.pld",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       /* Encrypted Payload Response */
       { &hf_homeplug_av_cm_enc_pld_rsp,
         { "Encrypted Payload Response", "homeplug_av.cm_enc_pld_rsp",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_cm_enc_pld_rsp_result,
         { "Result", "homeplug_av.cm_enc_pld_rsp.result",
-	  FT_UINT8, BASE_HEX, VALS(homeplug_av_generic_status_vals), HOMEPLUG_AV_GEN_STATUS_MASK, NULL, HFILL }
+          FT_UINT8, BASE_HEX, VALS(homeplug_av_generic_status_vals), HOMEPLUG_AV_GEN_STATUS_MASK, NULL, HFILL }
       },
       /* Set Key Request */
       { &hf_homeplug_av_cm_set_key_req,
         { "Set Key Request", "homeplug_av.cm_set_key_req",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_cm_set_key_req_nw_key,
         { "New Key", "homeplug_av.cm_set_key_req.nw_key",
-	  FT_BYTES, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_BYTES, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       /* Set Key Confirmation */
       { &hf_homeplug_av_cm_set_key_cnf,
         { "Set Key Confirmation", "homeplug_av.cm_set_key_cnf",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_cm_set_key_cnf_result,
         { "Result", "homeplug_av.cm_set_key_cnf.result",
-	  FT_UINT8, BASE_HEX, VALS(homeplug_av_generic_status_vals), HOMEPLUG_AV_GEN_STATUS_MASK, NULL, HFILL }
+          FT_UINT8, BASE_HEX, VALS(homeplug_av_generic_status_vals), HOMEPLUG_AV_GEN_STATUS_MASK, NULL, HFILL }
       },
       /* Get Key Request */
       { &hf_homeplug_av_cm_get_key_req,
         { "Get Key request", "homeplug_av.cm_get_key_req",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_cm_get_key_req_type,
         { "Request type", "homeplug_av.cm_get_key_req.type",
-	  FT_UINT8, BASE_HEX, VALS(homeplug_av_req_type_vals), HOMEPLUG_AV_REQ_TYPE_MASK, "Reserved", HFILL }
+          FT_UINT8, BASE_HEX, VALS(homeplug_av_req_type_vals), HOMEPLUG_AV_REQ_TYPE_MASK, "Reserved", HFILL }
       },
       { &hf_homeplug_av_cm_get_key_req_has_key,
         { "Hash key", "homeplug_av.cm_get_key_req.hash_key",
-	  FT_BYTES, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_BYTES, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       /* Get Key Confirmation */
       { &hf_homeplug_av_cm_get_key_cnf,
         { "Get Key Confirmation", "homeplug_av.cm_get_key_cnf",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_cm_get_key_cnf_result,
         { "Result", "homeplug_av.cm_get_key_cnf.result",
-	  FT_UINT8, BASE_HEX, VALS(homeplug_av_key_result_vals), HOMEPLUG_AV_KEY_RESULT_MASK, NULL, HFILL }
+          FT_UINT8, BASE_HEX, VALS(homeplug_av_key_result_vals), HOMEPLUG_AV_KEY_RESULT_MASK, NULL, HFILL }
       },
       { &hf_homeplug_av_cm_get_key_cnf_rtype,
         { "Requested key type", "homeplug_av.cm_get_key_cnf.rtype",
-	  FT_UINT8, BASE_HEX, VALS(homeplug_av_key_type_vals), HOMEPLUG_AV_KEY_TYPE_MASK, NULL, HFILL }
+          FT_UINT8, BASE_HEX, VALS(homeplug_av_key_type_vals), HOMEPLUG_AV_KEY_TYPE_MASK, NULL, HFILL }
       },
       { &hf_homeplug_av_cm_get_key_cnf_key,
         { "Encryption/Hash key", "homeplug_av.cm_get_key_cnf.key",
-	  FT_BYTES, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_BYTES, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       /* Get Bridge Informations Confirmation */
       { &hf_homeplug_av_brg_infos_cnf,
         { "Get Bridge Informations Confirmation", "homeplug_av.brg_infos_cnf",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_brg_infos_cnf_brd,
         { "Bridging", "homeplug_av.brg_infos_cnf.brd",
-	  FT_BOOLEAN, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_BOOLEAN, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_brg_infos_cnf_btei,
         { "Bridge Terminal Equipement Identifier", "homeplug_av.brg_infos_cnf.btei",
-	  FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_brg_infos_cnf_num_stas,
         { "Number of stations", "homeplug_av.brg_infos_cnf.num_stas",
-	  FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_brg_infos_cnf_mac,
         { "Bridged Destination Address", "homeplug_av.brg_infos_cnf.mac",
-	  FT_ETHER, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_ETHER, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       /* Get Network Informations Confirmation */
       { &hf_homeplug_av_cm_nw_infos_cnf,
         { "Get Network Informations Confirmation", "homeplug_av.nw_infos_cnf",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       /* Get Network Statistics Confirmation */
       { &hf_homeplug_av_nw_stats_cnf,
         { "Get Network Statistics Confirmation", "homeplug_av.nw_stats_cnf",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       /* Vendor Specific */
       { &hf_homeplug_av_vendor,
         { "Vendor MME", "homeplug_av.vendor",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_vendor_oui,
         { "OUI", "homeplug_av.vendor.oui",
-	  FT_BYTES, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_BYTES, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       /* Get Device/SW Version */
       { &hf_homeplug_av_get_sw_cnf,
         { "Get Device/SW Version", "homeplug_av.get_sw_cnf",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_get_sw_cnf_status,
         { "Status", "homeplug_av.get_sw_cnf.status",
-	  FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_get_sw_cnf_dev_id,
         { "Device ID", "homeplug_av.get_sw_cnf.dev_id",
-	  FT_UINT8, BASE_HEX, VALS(homeplug_av_dev_id_vals), HOMEPLUG_AV_DEV_ID_MASK, NULL, HFILL }
+          FT_UINT8, BASE_HEX, VALS(homeplug_av_dev_id_vals), HOMEPLUG_AV_DEV_ID_MASK, NULL, HFILL }
       },
       { &hf_homeplug_av_get_sw_cnf_ver_len,
         { "Version length", "homeplug_av.get_sw_cnf.ver_len",
-	  FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_get_sw_cnf_ver_str,
         { "Version", "homeplug_av.get_sw_cnf.ver_str",
-	  FT_STRING, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_STRING, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_get_sw_cnf_upg,
         { "Upgradable", "homeplug_av.get_sw_cnf.upg",
-	  FT_BOOLEAN, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_BOOLEAN, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       /* Write MAC Memory Request */
       { &hf_homeplug_av_wr_mem_req,
         { "Write MAC Memory Request", "homeplug_av.wr_mem_req",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_mem_addr,
         { "Address", "homeplug_av.mem.addr",
-	  FT_UINT32, BASE_HEX, NULL, 0x00, NULL, HFILL }
+          FT_UINT32, BASE_HEX, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_mem_len_32bits,
         { "Length", "homeplug_av.mem.len_32bits",
-	  FT_UINT32, BASE_HEX, NULL, 0x00, NULL, HFILL }
+          FT_UINT32, BASE_HEX, NULL, 0x00, NULL, HFILL }
       },
       /* Write MAC Memory Confirmation */
       { &hf_homeplug_av_wr_mem_cnf,
         { "Write MAC Memory Confirmation", "homeplug_av.wr_mem_cnf",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       /* Read MAC Memory Request */
       { &hf_homeplug_av_rd_mem_req,
         { "Read MAC Memory Request", "homeplug_av.rd_mem_req",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_rd_mem_cnf,
         { "Read MAC Memory Confirmation", "homeplug_av.rd_mem_cnf",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       /* Start MAC Request */
       { &hf_homeplug_av_st_mac_req,
         { "Start MAC Request", "homeplug_av.st_mac_req",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_st_mac_req_img_load,
         { "Image Load Starting Address", "homeplug_av.st_mac_req.img_load",
-	  FT_UINT32, BASE_HEX, NULL, 0x00, "Unknown", HFILL }
+          FT_UINT32, BASE_HEX, NULL, 0x00, "Unknown", HFILL }
       },
       { &hf_homeplug_av_st_mac_req_img_len,
         { "Image Length", "homeplug_av.st_mac_req.img_len",
-	  FT_UINT32, BASE_HEX, NULL, 0x00, "Unknown", HFILL }
+          FT_UINT32, BASE_HEX, NULL, 0x00, "Unknown", HFILL }
       },
       { &hf_homeplug_av_st_mac_req_img_chksum,
         { "Image Checksum", "homeplug_av.st_mac_req.img_chksum",
-	  FT_UINT32, BASE_HEX, NULL, 0x00, "Unknown", HFILL }
+          FT_UINT32, BASE_HEX, NULL, 0x00, "Unknown", HFILL }
       },
       { &hf_homeplug_av_st_mac_req_img_start,
         { "Image Starting Address", "homeplug_av.st_mac_req.img_start",
-	  FT_UINT32, BASE_HEX, NULL, 0x00, "Unknown", HFILL }
+          FT_UINT32, BASE_HEX, NULL, 0x00, "Unknown", HFILL }
       },
       /* Start MAC Confirmation */
       { &hf_homeplug_av_st_mac_cnf,
         { "Start MAC Confirmation", "homeplug_av.st_mac_cnf",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_st_mac_cnf_status,
         { "Module ID", "homeplug_av.st_mac_cnf.status",
-	  FT_UINT8, BASE_HEX, VALS(homeplug_av_st_mac_status_vals), 0x00, "Unknown", HFILL }
+          FT_UINT8, BASE_HEX, VALS(homeplug_av_st_mac_status_vals), 0x00, "Unknown", HFILL }
       },
       /* Get NVM Parameters Confirmation */
       { &hf_homeplug_av_get_nvm_cnf,
         { "Get NVM Parameters Confirmation", "homeplug_av.get_nvm_cnf",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_get_nvm_cnf_status,
         { "Status", "homeplug_av.get_nvm_cnf.status",
-	  FT_UINT8, BASE_HEX, VALS(homeplug_av_get_nvm_status_vals), 0x00, "Unknown", HFILL }
+          FT_UINT8, BASE_HEX, VALS(homeplug_av_get_nvm_status_vals), 0x00, "Unknown", HFILL }
       },
       { &hf_homeplug_av_get_nvm_cnf_nvm_type,
         { "NVM Type", "homeplug_av.get_nvm_cnf.nvm_type",
-	  FT_UINT32, BASE_HEX, NULL, 0x00, "Unknown", HFILL }
+          FT_UINT32, BASE_HEX, NULL, 0x00, "Unknown", HFILL }
       },
       { &hf_homeplug_av_get_nvm_cnf_nvm_page,
         { "NVM Page Size", "homeplug_av.get_nvm_cnf.nvm_page",
-	  FT_UINT32, BASE_HEX, NULL, 0x00, "Unknown", HFILL }
+          FT_UINT32, BASE_HEX, NULL, 0x00, "Unknown", HFILL }
       },
       { &hf_homeplug_av_get_nvm_cnf_nvm_block,
         { "NVM Block Size", "homeplug_av.get_nvm_cnf.nvm_block",
-	  FT_UINT32, BASE_HEX, NULL, 0x00, "Unknown", HFILL }
+          FT_UINT32, BASE_HEX, NULL, 0x00, "Unknown", HFILL }
       },
       { &hf_homeplug_av_get_nvm_cnf_nvm_size,
         { "NVM Memory Size", "homeplug_av.get_nvm_cnf.nvm_size",
-	  FT_UINT32, BASE_HEX, NULL, 0x00, "Unknown", HFILL }
+          FT_UINT32, BASE_HEX, NULL, 0x00, "Unknown", HFILL }
       },
       /* Reset Device Confirmation */
       { &hf_homeplug_av_rs_dev_cnf,
         { "Reset Device Confirmation", "homeplug_av.rs_dev_cnf",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_rs_dev_cnf_status,
         { "Status", "homeplug_av.rs_dev_cnf.status",
-	  FT_UINT8, BASE_HEX, VALS(homeplug_av_rs_dev_status_vals), 0x00, "Unknown", HFILL }
+          FT_UINT8, BASE_HEX, VALS(homeplug_av_rs_dev_status_vals), 0x00, "Unknown", HFILL }
       },
       /* Shared memory related fields */
       { &hf_homeplug_av_mem_len_16bits,
         { "Length", "homeplug_av.mem.len_16bits",
-	  FT_UINT16, BASE_HEX, NULL, 0x00, NULL, HFILL }
+          FT_UINT16, BASE_HEX, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_mem_offset,
         { "Offset", "homeplug_av.mem.offset",
-	  FT_UINT32, BASE_HEX, NULL, 0x00, NULL, HFILL }
+          FT_UINT32, BASE_HEX, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_mem_checksum,
         { "Checksum", "homeplug_av.mem.checksum",
-	  FT_UINT32, BASE_HEX, NULL, 0x00, NULL, HFILL }
+          FT_UINT32, BASE_HEX, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_mem_data,
         { "Data", "homeplug_av.mem.data",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_mem_status,
         { "Status", "homeplug_av.mem.status",
-	  FT_UINT8, BASE_HEX, VALS(homeplug_av_wr_rd_mem_status_vals), 0x00, "Unknown", HFILL }
+          FT_UINT8, BASE_HEX, VALS(homeplug_av_wr_rd_mem_status_vals), 0x00, "Unknown", HFILL }
       },
       /* Write Module Data Request */
       { &hf_homeplug_av_wr_mod_req,
         { "Write Module Data Request", "homeplug_av.wr_mod_req",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       /* Write Module Data Confirmation */
       { &hf_homeplug_av_wr_mod_cnf,
         { "Write Module Data Confirmation", "homeplug_av.wr_mod_cnf",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_wr_mod_cnf_status,
         { "Status", "homeplug_av.wr_mod_cnf.status",
-	  FT_UINT8, BASE_HEX, VALS(homeplug_av_wr_rd_mod_cnf_status_vals), 0x00, "Unknown", HFILL }
+          FT_UINT8, BASE_HEX, VALS(homeplug_av_wr_rd_mod_cnf_status_vals), 0x00, "Unknown", HFILL }
       },
       /* Write Module Data Indicate */
       { &hf_homeplug_av_wr_mod_ind,
         { "Write Module Data Indicate", "homeplug_av.wr_mod_ind",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_wr_mod_ind_status,
         { "Status", "homeplug_av.wr_mod_ind.status",
-	  FT_UINT8, BASE_HEX, VALS(homeplug_av_wr_mod_ind_status_vals), 0x00, "Unknown", HFILL }
+          FT_UINT8, BASE_HEX, VALS(homeplug_av_wr_mod_ind_status_vals), 0x00, "Unknown", HFILL }
       },
       /* Read Module Data Request */
       { &hf_homeplug_av_rd_mod_req,
         { "Read Module Data Request", "homeplug_av.rd_mod_req",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       /* Read Module Data Confirmation */
       { &hf_homeplug_av_rd_mod_cnf,
         { "Read Module Data Confirmation", "homeplug_av.rd_mod_cnf",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_rd_mod_cnf_status,
         { "Status", "homeplug_av.rd_mod_cnf.status",
-	  FT_UINT8, BASE_HEX, VALS(homeplug_av_wr_rd_mod_cnf_status_vals), 0x00, "Unknown", HFILL }
+          FT_UINT8, BASE_HEX, VALS(homeplug_av_wr_rd_mod_cnf_status_vals), 0x00, "Unknown", HFILL }
       },
       { &hf_homeplug_av_mac_module_id,
         { "Module ID", "homeplug_av.module_id",
-	  FT_UINT8, BASE_HEX, VALS(homeplug_av_mac_module_id_vals), 0x00, "Unknown", HFILL }
+          FT_UINT8, BASE_HEX, VALS(homeplug_av_mac_module_id_vals), 0x00, "Unknown", HFILL }
       },
       /* Write Module Data to NVM Request */
       { &hf_homeplug_av_mod_nvm_req,
         { "Write Module Data to NVM Request", "homeplug_av.mod_nvm_req",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       /* Write Module Data to NVM Confirmation */
       { &hf_homeplug_av_mod_nvm_cnf,
         { "Write Module Data to NVM Confirmation", "homeplug_av.mod_nvm_cnf",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_mod_nvm_cnf_status,
         { "Status", "homeplug_av.mod_nvm_cnf.status",
-	  FT_UINT8, BASE_HEX, VALS(homeplug_av_mod_nvm_status_vals), 0x00, "Unknown", HFILL }
+          FT_UINT8, BASE_HEX, VALS(homeplug_av_mod_nvm_status_vals), 0x00, "Unknown", HFILL }
       },
       /* Get Watchdog Report Request */
       { &hf_homeplug_av_wd_rpt_req,
         { "Get Watchdog Report Request", "homeplug_av.wd_rpt_req",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_wd_rpt_req_session_id,
         { "Session ID", "homeplug_av.wd_rpt_req.session_id",
-	  FT_UINT16, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT16, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_wd_rpt_req_clr,
         { "Clear flag", "homeplug_av.wd_rpt_req.clr",
-	  FT_UINT8, BASE_HEX, VALS(homeplug_av_rpt_clr_vals), HOMEPLUG_AV_RPT_CLR_MASK, "Unknown", HFILL }
+          FT_UINT8, BASE_HEX, VALS(homeplug_av_rpt_clr_vals), HOMEPLUG_AV_RPT_CLR_MASK, "Unknown", HFILL }
       },
       /* Get Watchdog Report Indicate */
       { &hf_homeplug_av_wd_rpt_ind,
         { "Get Watchdog Report Indicate", "homeplug_av.wd_rpt_ind",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_wd_rpt_ind_status,
         { "Status", "homeplug_av.wd_rpt_ind.status",
-	  FT_UINT8, BASE_HEX, VALS(homeplug_av_generic_status_vals), HOMEPLUG_AV_GEN_STATUS_MASK, "Unknown", HFILL }
+          FT_UINT8, BASE_HEX, VALS(homeplug_av_generic_status_vals), HOMEPLUG_AV_GEN_STATUS_MASK, "Unknown", HFILL }
       },
       { &hf_homeplug_av_wd_rpt_ind_session_id,
         { "Session ID", "homeplug_av.wd_rpt_ind.session_id",
-	  FT_UINT16, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT16, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_wd_rpt_ind_num_parts,
         { "Number of parts", "homeplug_av.wd_rpt_ind.num_parts",
-	  FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_wd_rpt_ind_curr_part,
         { "Current Part", "homeplug_av.wd_rpt_ind.curr_part",
-	  FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_wd_rpt_ind_rdata_len,
         { "Report Data Length", "homeplug_av.wd_rpt_ind.rdata_len",
-	  FT_UINT16, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT16, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_wd_rpt_ind_rdata_ofs,
         { "Report Data Offset", "homeplug_av.wd_rpt_ind.rdata_offset",
-	  FT_UINT8, BASE_HEX, NULL, 0x00, NULL, HFILL }
+          FT_UINT8, BASE_HEX, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_wd_rpt_ind_rdata,
         { "Report Data", "homeplug_av.wd_rpt_ind.rdata",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       /* Link Statistics Request */
       { &hf_homeplug_av_lnk_stats_req,
         { "Link Statistics Request", "homeplug_av.lnk_stats_req",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_lnk_stats_req_mcontrol,
         { "Control", "homeplug_av.lnk_stats_req.mcontrol",
-	  FT_UINT8, BASE_HEX, VALS(homeplug_av_lnk_stats_mctrl_vals), HOMEPLUG_AV_LNK_STATS_MCTL_MASK, "Unknown", HFILL }
+          FT_UINT8, BASE_HEX, VALS(homeplug_av_lnk_stats_mctrl_vals), HOMEPLUG_AV_LNK_STATS_MCTL_MASK, "Unknown", HFILL }
       },
       { &hf_homeplug_av_lnk_stats_req_dir,
         { "Direction", "homeplug_av.lnk_stats_req.dir",
-	  FT_UINT8, BASE_HEX, VALS(homeplug_av_lnk_stats_dir_vals), HOMEPLUG_AV_LNK_STATS_DIR_MASK, "Unknown", HFILL }
+          FT_UINT8, BASE_HEX, VALS(homeplug_av_lnk_stats_dir_vals), HOMEPLUG_AV_LNK_STATS_DIR_MASK, "Unknown", HFILL }
       },
       { &hf_homeplug_av_lnk_stats_req_lid,
         { "Link ID", "homeplug_av.lnk_stats_req.lid",
-	  FT_UINT8, BASE_HEX, VALS(homeplug_av_lnk_stats_lid_vals), 0x00, "Unknown", HFILL }
+          FT_UINT8, BASE_HEX, VALS(homeplug_av_lnk_stats_lid_vals), 0x00, "Unknown", HFILL }
       },
       { &hf_homeplug_av_lnk_stats_req_macaddr,
         { "Peer Node", "homeplug_av.lnk_stats_req.macaddr",
-	  FT_ETHER, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_ETHER, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       /* Link Statistics Confirmation */
       { &hf_homeplug_av_lnk_stats_cnf,
         { "Link Statistics Confirmation", "homeplug_av.lnk_stats_cnf",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_lnk_stats_cnf_status,
         { "Status", "homeplug_av.lnk_stats_cnf.status",
-	  FT_UINT8, BASE_HEX, VALS(homeplug_av_lnk_status_vals), 0x00, "Unknown", HFILL }
+          FT_UINT8, BASE_HEX, VALS(homeplug_av_lnk_status_vals), 0x00, "Unknown", HFILL }
       },
       { &hf_homeplug_av_lnk_stats_cnf_dir,
         { "Direction", "homeplug_av.lnk_stats_cnf.dir",
-	  FT_UINT8, BASE_HEX, VALS(homeplug_av_lnk_stats_dir_vals), HOMEPLUG_AV_LNK_STATS_DIR_MASK, "Unknown", HFILL }
+          FT_UINT8, BASE_HEX, VALS(homeplug_av_lnk_stats_dir_vals), HOMEPLUG_AV_LNK_STATS_DIR_MASK, "Unknown", HFILL }
       },
       { &hf_homeplug_av_lnk_stats_cnf_lid,
         { "Link ID", "homeplug_av.lnk_stats_cnf.lid",
-	  FT_UINT8, BASE_HEX, VALS(homeplug_av_lnk_stats_lid_vals), 0x00, "Unknown", HFILL }
+          FT_UINT8, BASE_HEX, VALS(homeplug_av_lnk_stats_lid_vals), 0x00, "Unknown", HFILL }
       },
       { &hf_homeplug_av_lnk_stats_cnf_tei,
         { "TEI", "homeplug_av.lnk_stats_cnf.tei",
-	  FT_UINT8, BASE_HEX, NULL, 0x00, NULL, HFILL }
+          FT_UINT8, BASE_HEX, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_lnk_stats_cnf_lstats,
         { "Link statistics", "homeplug_av.lnk_stats_cnf.lstats",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       /* Link statistics members */
       { &hf_homeplug_av_lnk_stats_tx,
         { "Tx link statistics", "homeplug_av.lnk_stats.tx",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_lnk_stats_tx_mpdu_ack,
         { "Number of MPDUs Transmitted and Acknowledged", "homeplug_av.lnk_stats.tx.mpdu_ack",
-	  FT_UINT64, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT64, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_lnk_stats_tx_mpdu_col,
         { "Number of MPDUs Transmitted and Collided", "homeplug_av.lnk_stats.tx.mpdu_col",
-	  FT_UINT64, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT64, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_lnk_stats_tx_mpdu_fai,
         { "Number of MPDUs Transmitted and Failed", "homeplug_av.lnk_stats.tx.mpdu_fail",
-	  FT_UINT64, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT64, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_lnk_stats_tx_pbs_pass,
         { "Number of PB Transmitted Successfully", "homeplug_av.lnk_stats.tx.pbs_pass",
-	  FT_UINT64, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT64, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_lnk_stats_tx_pbs_fail,
         { "Number of PB Transmitted Unsuccessfully", "homeplug_av.lnk_stats.tx.pbs_fail",
-	  FT_UINT64, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT64, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_lnk_stats_rx,
         { "Rx link statistics", "homeplug_av.lnk_stats.rx",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_lnk_stats_rx_mpdu_ack,
         { "Number of MPDUs Received and Acknowledged", "homeplug_av.lnk_stats.rx.mdpu_ack",
-	  FT_UINT64, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT64, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_lnk_stats_rx_mpdu_fai,
         { "Number of MPDUs Received and Failed", "homeplug_av.lnk_stats.rx.mdpu_fail",
-	  FT_UINT64, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT64, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_lnk_stats_rx_pbs_pass,
         { "Number of PB Received Successfully", "homeplug_av.lnk_stats.rx.pbs_pass",
-	  FT_UINT64, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT64, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_lnk_stats_rx_pbs_fail,
         { "Number of PB Received Unsuccessfully", "homeplug_av.lnk_stats.rx.pbs_fail",
-	  FT_UINT64, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT64, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_lnk_stats_rx_tb_pass,
         { "Sum of Turbo Bit Error over successfully recevied PBs", "homeplug_av.lnk_stats.rx.tb_pass",
-	  FT_UINT64, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT64, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_lnk_stats_rx_tb_fail,
         { "Sum of Turbo Bit Error over unsuccessfully recevied PBs", "homeplug_av.lnk_stats.rx.tb_fail",
-	  FT_UINT64, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT64, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_lnk_stats_rx_num_int,
         { "Number of Tone Map Intervals", "homeplug_av.lnk_stats.rx.num_int",
-	  FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_rx_inv_stats,
         { "Rx Interval Statistics", "homeplug_av.lnk_stats.rx.inv",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_rx_inv_phy_rate,
         { "Rx Phy Rate for Tone Map Interval 0", "homeplug_av.lnk_stats.rx.inv.phy_rate",
-	  FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_rx_inv_pbs_pass,
         { "Number of PB Received Successfully", "homeplug_av.lnk_stats.rx.inv.pbs_pass",
-	  FT_UINT64, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT64, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_rx_inv_pbs_fail,
         { "Number of PB Received Unsuccessfully", "homeplug_av.lnk_stats.rx.inv.pbs_fail",
-	  FT_UINT64, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT64, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_rx_inv_tb_pass,
         { "Sum of the Turbo Bit Error over all PBs received successfully", "homeplug_av.lnk_stats.rx.inv.tb_pass",
-	  FT_UINT64, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT64, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_rx_inv_tb_fail,
         { "Sum of the Turbo Bit Error over all PBs received unsuccessfully", "homeplug_av.lnk_stats.rx.inv.tb_fail",
-	  FT_UINT64, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT64, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       /* Sniffer Request */
       { &hf_homeplug_av_sniffer_req,
         { "Sniffer Request", "homeplug_av.sniffer_req",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_sniffer_req_ctrl,
         { "Sniffer Control", "homeplug_av.sniffer_req.ctrl",
-	  FT_UINT8, BASE_HEX, VALS(homeplug_av_sniffer_ctrl_vals), HOMEPLUG_AV_SNIFFER_CTRL_MASK, NULL, HFILL }
+          FT_UINT8, BASE_HEX, VALS(homeplug_av_sniffer_ctrl_vals), HOMEPLUG_AV_SNIFFER_CTRL_MASK, NULL, HFILL }
       },
       /* Sniffer Confirmation */
       { &hf_homeplug_av_sniffer_cnf,
         { "Sniffer Confirmation" , "homeplug_av.sniffer_cnf",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_sniffer_cnf_status,
         { "Status", "homeplug_av.sniffer_cnf.status",
-	  FT_UINT8, BASE_HEX, VALS(homeplug_av_sniffer_status_vals), 0x00, NULL, HFILL }
+          FT_UINT8, BASE_HEX, VALS(homeplug_av_sniffer_status_vals), 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_sniffer_cnf_state,
         { "State", "homeplug_av.sniffer_cnf.state",
-	  FT_BOOLEAN, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_BOOLEAN, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_sniffer_cnf_da,
         { "Destination address", "homeplug_av.sniffer_cnf.da",
-	  FT_ETHER, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_ETHER, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       /* Sniffer Indicate */
       { &hf_homeplug_av_sniffer_ind,
         { "Sniffer Indicate", "homeplug_av.sniffer_ind",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_sniffer_ind_type,
         { "Sniffer Type", "homeplug_av.sniffer_ind.type",
-	  FT_UINT8, BASE_HEX, VALS(homeplug_av_sniffer_type_vals), 0x00, "Unknown", HFILL }
+          FT_UINT8, BASE_HEX, VALS(homeplug_av_sniffer_type_vals), 0x00, "Unknown", HFILL }
       },
       { &hf_homeplug_av_sniffer_ind_data,
         { "Sniffer Data", "homeplug_av.sniffer_ind.data",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_sniffer_data_dir,
         { "Direction", "homeplug_av.sniffer_ind.data.dir",
-	  FT_UINT8, BASE_HEX, VALS(homeplug_av_lnk_stats_dir_vals), HOMEPLUG_AV_LNK_STATS_DIR_MASK, NULL, HFILL }
+          FT_UINT8, BASE_HEX, VALS(homeplug_av_lnk_stats_dir_vals), HOMEPLUG_AV_LNK_STATS_DIR_MASK, NULL, HFILL }
       },
       { &hf_homeplug_av_sniffer_data_systime,
         { "System time", "homeplug_av.sniffer_ind.data.systime",
-	  FT_UINT64, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT64, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_sniffer_data_bc_time,
         { "Beacon time", "homeplug_av.sniffer_ind.data.bc_time",
-	  FT_UINT32, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT32, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       /* Network Info Confirmation */
       { &hf_homeplug_av_nw_info_cnf,
         { "Network Info Confirmation", "homeplug_av.nw_info_cnf",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_nw_info_net_info,
         { "Networks informations", "homeplug_av.nw_info_cnf.net_info",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_nw_info_num_avlns,
         { "Number of AV Logical Networks", "homeplug_av.nw_info.num_avlns",
-	  FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_nw_info_nid,
         { "Network ID", "homeplug_av.nw_info.nid",
-	  FT_BYTES, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_BYTES, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_nw_info_snid,
         { "Short Network ID", "homeplug_av.nw_info.snid",
-	  FT_UINT8, BASE_HEX, NULL, 0xF0, NULL, HFILL }
+          FT_UINT8, BASE_HEX, NULL, 0xF0, NULL, HFILL }
       },
       { &hf_homeplug_av_nw_info_tei,
         { "Terminal Equipement Identifer", "homeplug_av.nw_info.tei",
-	  FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_nw_info_sta_role,
         { "Station Role", "homeplug_av.nw_info.sta_role",
-	  FT_UINT8, BASE_HEX, VALS(homeplug_av_nw_info_role_vals), HOMEPLUG_AV_NW_INFO_ROLE_MASK, "Reserved", HFILL }
+          FT_UINT8, BASE_HEX, VALS(homeplug_av_nw_info_role_vals), HOMEPLUG_AV_NW_INFO_ROLE_MASK, "Reserved", HFILL }
       },
       { &hf_homeplug_av_nw_info_cco_mac,
         { "CCo MAC Address", "homeplug_av.nw_info_cnf.cco_mac",
-	  FT_ETHER, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_ETHER, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_nw_info_cco_tei,
         { "CCo Terminal Equipement Identifier", "homeplug_av.nw_info_cnf.cco_tei",
-	  FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_nw_info_num_stas,
         { "Number of AV Stations", "homeplug_av.nw_info_cnf.num_stas",
-	  FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_nw_info_access,
         { "Access network", "homeplug_av.nw_info_cnf.access",
-	  FT_UINT8, BASE_HEX, VALS(homeplug_nw_info_access_vals), HOMEPLUG_AV_NW_INFO_NID_MASK, "Reserved", HFILL }
+          FT_UINT8, BASE_HEX, VALS(homeplug_nw_info_access_vals), HOMEPLUG_AV_NW_INFO_NID_MASK, "Reserved", HFILL }
       },
       { &hf_homeplug_av_nw_info_num_coord,
         { "Number of neighbor networks coordinating", "homeplug_av.nw_info_cnf.num_coord",
-	  FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       /* Network Info per station */
       { &hf_homeplug_av_nw_info_sta_info,
         { "Stations Informations", "homeplug_av.nw_info_cnf.sta_info",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_nw_info_sta_da,
         { "Station MAC Address", "homeplug_av.nw_info_cnf.sta_info.da",
-	  FT_ETHER, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_ETHER, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_nw_info_sta_tei,
         { "Station Terminal Equipement Identifier", "homeplug_av.nw_info_cnf.sta_indo.tei",
-	  FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_nw_info_sta_bda,
         { "MAC Address of first Node Bridged by Station", "homeplug_av.nw_info_cnf.sta_indo.bda",
-	  FT_ETHER, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_ETHER, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_nw_info_sta_phy_dr_tx,
         { "Average PHY Tx data Rate (Mbits/sec)", "homeplug_av.nw_info_cnf.sta_indo.phy_dr_tx",
-	  FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_nw_info_sta_phy_dr_rx,
         { "Average PHY Rx data Rate (Mbits/sec)", "homeplug_av.nw_info_cnf.sta_indo.phy_dr_rx",
-	  FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       /* Check Points Request */
       { &hf_homeplug_av_cp_rpt_req,
         { "Check Points Request", "homeplug_av.cp_rpt_req",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_cp_rpt_req_session_id,
         { "Session ID", "homeplug_av.cp_rpt_req.session_id",
-	  FT_UINT16, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT16, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_cp_rpt_req_clr,
         { "Clear flag", "homeplug_av.cp_rpt_req.clr",
-	  FT_UINT8, BASE_HEX, VALS(homeplug_av_rpt_clr_vals), HOMEPLUG_AV_RPT_CLR_MASK, "Unknown", HFILL }
+          FT_UINT8, BASE_HEX, VALS(homeplug_av_rpt_clr_vals), HOMEPLUG_AV_RPT_CLR_MASK, "Unknown", HFILL }
       },
       /* Check Points Confirmation */
       { &hf_homeplug_av_cp_rpt_ind,
         { "Check Points Confirmation", "homeplug_av.cp_rpt_ind",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_cp_rpt_ind_status,
         { "Status", "homeplug_av.cp_rpt_ind.status",
-	  FT_UINT8, BASE_HEX, VALS(homeplug_av_generic_status_vals), HOMEPLUG_AV_GEN_STATUS_MASK, "Unknown", HFILL }
+          FT_UINT8, BASE_HEX, VALS(homeplug_av_generic_status_vals), HOMEPLUG_AV_GEN_STATUS_MASK, "Unknown", HFILL }
       },
       { &hf_homeplug_av_cp_rpt_ind_major_ver,
         { "Major version", "homeplug_av.cp_rpt_ind.major_ver",
-	  FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_cp_rpt_ind_minor_ver,
         { "Minor version", "homeplug_av.cp_rpt_ind.minor_ver",
-	  FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_cp_rpt_ind_session_id,
         { "Session ID", "homeplug_av.cp_rpt_ind.session_id",
-	  FT_UINT16, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT16, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_cp_rpt_ind_total_size,
         { "Total size", "homeplug_av.cp_rpt_ind.total_size",
-	  FT_UINT32, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT32, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_cp_rpt_ind_blk_offset,
         { "Offset", "homeplug_av.cp_rpt_ind.blk_offset",
-	  FT_UINT32, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT32, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_cp_rpt_ind_byte_index,
         { "Byte Index", "homeplug_av.cp_rpt_ind.byte_index",
-	  FT_UINT32, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT32, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_cp_rpt_ind_num_parts,
         { "Number of parts", "homeplug_av.cp_rpt_ind.num_parts",
-	  FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_cp_rpt_ind_curr_part,
         { "Current part", "homeplug_av.cp_rpt_ind.curr_part",
@@ -4008,359 +4073,359 @@ proto_register_homeplug_av(void)
       },
       { &hf_homeplug_av_cp_rpt_ind_data_len,
         { "Data length", "homeplug_av.cp_rpt_ind.data_len",
-	  FT_UINT16, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT16, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_cp_rpt_ind_data_ofs,
         { "Data offset", "homeplug_av.cp_rpt_ind.data_ofs",
-	  FT_UINT8, BASE_HEX, NULL, 0x00, NULL, HFILL }
+          FT_UINT8, BASE_HEX, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_cp_rpt_ind_data,
         { "Report Data", "homeplug_av.cp_rpt_ind.data",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       /* Loopback Request */
       { &hf_homeplug_av_fr_lbk_req,
         { "Loopback Request", "homeplug_av.fr_lbk.req",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_fr_lbk_duration,
         { "Duration", "homeplug_av.lbk.duration",
-	  FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_fr_lbk_len,
         { "Length", "homeplug_av.lbk.len",
-	  FT_UINT16, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT16, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_fr_lbk_req_data,
         { "Data", "homeplug_av.fr_lbj_req.data",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       /* Loopback Confirmation */
       { &hf_homeplug_av_fr_lbk_cnf,
         { "Loopback Confirmation", "homeplug_av.fr_lbk_cnf",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_fr_lbk_cnf_status,
         { "Status", "homeplug_av.fr_lbk_cnf.status",
-	  FT_UINT8, BASE_HEX, VALS(homeplug_av_generic_status_vals), HOMEPLUG_AV_GEN_STATUS_MASK, "Unknown", HFILL }
+          FT_UINT8, BASE_HEX, VALS(homeplug_av_generic_status_vals), HOMEPLUG_AV_GEN_STATUS_MASK, "Unknown", HFILL }
       },
       { &hf_homeplug_av_lbk_stat_cnf,
         { "Loopback Status Confirmation", "homeplug_av.lnk_stat_cnf",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_lbk_stat_cnf_status,
         { "Status", "homeplug_av.lnk_stat_cnf.status",
-	  FT_UINT8, BASE_HEX, VALS(homeplug_av_generic_status_vals), HOMEPLUG_AV_GEN_STATUS_MASK, NULL, HFILL }
+          FT_UINT8, BASE_HEX, VALS(homeplug_av_generic_status_vals), HOMEPLUG_AV_GEN_STATUS_MASK, NULL, HFILL }
       },
       { &hf_homeplug_av_lbk_stat_cnf_lbk_stat,
         { "Loopback Status", "homeplug_av.lnk_stat_cnf.lbk_stat",
-	  FT_UINT8, BASE_HEX, VALS(homeplug_av_lbk_status_vals), HOMEPLUG_AV_LBK_STATUS_MASK, NULL, HFILL }
+          FT_UINT8, BASE_HEX, VALS(homeplug_av_lbk_status_vals), HOMEPLUG_AV_LBK_STATUS_MASK, NULL, HFILL }
       },
       /* Set Encryption Key Request */
       { &hf_homeplug_av_set_key_req,
         { "Set Encryption Key Request", "homeplug_av.set_key_req",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_set_key_req_eks,
         { "EKS", "homeplug_av.set_key_req.eks",
-	  FT_UINT8, BASE_HEX, VALS(homeplug_av_set_key_peks_vals), 0x00, "Unknown", HFILL }
+          FT_UINT8, BASE_HEX, VALS(homeplug_av_set_key_peks_vals), 0x00, "Unknown", HFILL }
       },
       { &hf_homeplug_av_set_key_req_nmk,
         { "NMK", "homeplug_av.set_key_req.nmk",
-	  FT_BYTES, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_BYTES, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_set_key_req_rda,
         { "Destination Address", "homeplug_av.set_key_req.rda",
-	  FT_ETHER, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_ETHER, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_set_key_req_dak,
         { "DAK", "homeplug_av.set_key_req.dak",
-	  FT_BYTES, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_BYTES, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       /* Set Encryption Key Confirmation */
       { &hf_homeplug_av_set_key_cnf,
         { "Set Encryption Key Confirmation", "homeplug_av.set_key_cnf",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_set_key_cnf_status,
         { "Status", "homeplug_av.set_key_cnf.status",
-	  FT_UINT8, BASE_HEX, VALS(homeplug_av_set_key_status_vals), 0x00, NULL, HFILL }
+          FT_UINT8, BASE_HEX, VALS(homeplug_av_set_key_status_vals), 0x00, NULL, HFILL }
       },
       /* Get Manufacturer String Confirmation */
       { &hf_homeplug_av_mfg_string_cnf,
         { "Get Manufacturer String Confirmation", "homeplug_av.mfg_string_cnf",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_mfg_string_cnf_status,
         { "Status", "homeplug_av.mfg_string_cnf.status",
-	  FT_UINT8, BASE_HEX, VALS(homeplug_av_generic_status_vals), HOMEPLUG_AV_GEN_STATUS_MASK, NULL, HFILL }
+          FT_UINT8, BASE_HEX, VALS(homeplug_av_generic_status_vals), HOMEPLUG_AV_GEN_STATUS_MASK, NULL, HFILL }
       },
       { &hf_homeplug_av_mfg_string_cnf_len,
         { "Length", "homeplug_av.mfg_string_cnf.len",
-	  FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_mfg_string_cnf_string,
         { "Manufacturing String", "homeplug_av.mfg_string_cnf.string",
-	  FT_STRING, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_STRING, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       /* Read Configuration Block Confirmation */
       { &hf_homeplug_av_rd_cblock_cnf,
         { "Read Configuration Block Confirmation", "homeplug_av.rd_block_cnf",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_rd_cblock_cnf_status,
         { "Status", "homeplug_av.rd_block_cnf.status",
-	  FT_UINT8, BASE_HEX, VALS(homeplug_av_cblock_status_vals), 0x00, NULL, HFILL }
+          FT_UINT8, BASE_HEX, VALS(homeplug_av_cblock_status_vals), 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_rd_cblock_cnf_len,
         { "Length", "homeplug_av.rd_block_cnf.len",
-	  FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       /* Configuration Block Header */
       { &hf_homeplug_av_cblock_hdr,
         { "Configuration Block Header", "homeplug_av.cblock_hdr",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_cblock_hdr_ver,
         { "Header Version Number", "homeplug_av.cblock_hdr.ver",
-	  FT_UINT32, BASE_HEX, NULL, 0x00, NULL, HFILL }
+          FT_UINT32, BASE_HEX, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_cblock_img_rom_addr,
         { "Image address in NVM", "homeplug_av.cblock_hdr.img_rom_addr",
-	  FT_UINT32, BASE_HEX, NULL, 0x00, NULL, HFILL }
+          FT_UINT32, BASE_HEX, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_cblock_img_addr,
         { "Image address in SDRAM", "homeplug_av.cblock_hdr.img_addr",
-	  FT_UINT32, BASE_HEX, NULL, 0x00, NULL, HFILL }
+          FT_UINT32, BASE_HEX, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_cblock_img_len,
         { "Image length", "homeplug_av.cblock_hdr.img_len",
-	  FT_UINT32, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT32, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_cblock_img_chksum,
         { "Image Checksum", "homeplug_av.cblock_hdr.img_chksum",
-	  FT_UINT32, BASE_HEX, NULL, 0x00, NULL, HFILL }
+          FT_UINT32, BASE_HEX, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_cblock_entry_point,
         { "Entry Point", "homeplug_av.cblock_hdr.entry_point",
-	  FT_UINT32, BASE_HEX, NULL, 0x00, NULL, HFILL }
+          FT_UINT32, BASE_HEX, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_cblock_next_hdr,
         { "Address of next header in NVM", "homeplug_av.cblock_hdr.next_hdr",
-	  FT_UINT32, BASE_HEX, NULL, 0x00, NULL, HFILL }
+          FT_UINT32, BASE_HEX, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_cblock_hdr_chksum,
         { "Header checksum", "homeplug_av.cblock_hdr.hdr_chksum",
-	  FT_UINT32, BASE_HEX, NULL, 0x00, NULL, HFILL }
+          FT_UINT32, BASE_HEX, NULL, 0x00, NULL, HFILL }
       },
       /* Configuration Block */
       { &hf_homeplug_av_cblock,
         { "Configuration Block", "homeplug_av.cblock",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_cblock_sdram_size,
         { "SDRAM size", "homeplug_av.cblock.sdram_size",
-	  FT_UINT32, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT32, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_cblock_sdram_conf,
         { "SDRAM Configuration Register", "homeplug_av.cblock.sdram_conf",
-	  FT_UINT32, BASE_HEX, NULL, 0x00, NULL, HFILL }
+          FT_UINT32, BASE_HEX, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_cblock_sdram_tim0,
         { "SDRAM Timing Register 0", "homeplug_av.cblock.sdram_tim0",
-	  FT_UINT32, BASE_HEX, NULL, 0x00, NULL, HFILL }
+          FT_UINT32, BASE_HEX, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_cblock_sdram_tim1,
         { "SDRAM Timing Register 1", "homeplug_av.cblock.sdram_tim1",
-	  FT_UINT32, BASE_HEX, NULL, 0x00, NULL, HFILL }
+          FT_UINT32, BASE_HEX, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_cblock_sdram_cntrl,
         { "SDRAM Control Register", "homeplug_av.cblock.sdram_cntrl",
-	  FT_UINT32, BASE_HEX, NULL, 0x00, NULL, HFILL }
+          FT_UINT32, BASE_HEX, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_cblock_sdram_refresh,
         { "SDRAM Refresh Register", "homeplug_av.cblock.sdram_refresh",
-	  FT_UINT32, BASE_HEX, NULL, 0x00, NULL, HFILL }
+          FT_UINT32, BASE_HEX, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_cblock_mac_clock,
         { "MAC Clock Register", "homeplug_av.cblock.mac_clock",
-	  FT_UINT32, BASE_HEX, NULL, 0x00, NULL, HFILL }
+          FT_UINT32, BASE_HEX, NULL, 0x00, NULL, HFILL }
       },
       /* Set SDRAM Configuration Request */
       { &hf_homeplug_av_set_sdram_req,
         { "Set SDRAM Configuration Request", "homeplug_av.set_sdram_req",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_set_sdram_req_chksum,
         { "Checksum", "homeplug_av.set_sdram_req.chksum",
-	  FT_UINT32, BASE_HEX, NULL, 0x00, NULL, HFILL }
+          FT_UINT32, BASE_HEX, NULL, 0x00, NULL, HFILL }
       },
       /* Set SDRAM Configuration Confirmation */
       { &hf_homeplug_av_set_sdram_cnf,
         { "Set SDRAM Configuration Confirmation", "homeplug_av.set_sdram_cnf",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_set_sdram_cnf_status,
         { "Status", "homeplug_av.set_sdram_cnf.status",
-	  FT_UINT8, BASE_HEX, VALS(homeplug_av_cblock_status_vals), 0x00, "Unknown", HFILL }
+          FT_UINT8, BASE_HEX, VALS(homeplug_av_cblock_status_vals), 0x00, "Unknown", HFILL }
       },
       /* Embedded Host Action Required Indicate */
       { &hf_homeplug_av_host_action_ind,
         { "Embedded Host Action Required Indicate", "homeplug_av.host_action_ind",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_host_action_ind_act,
         { "Action required", "homeplug_av.host_action_ind.action",
-	  FT_UINT8, BASE_HEX, VALS(homeplug_av_host_action_vals), 0x00, NULL, HFILL }
+          FT_UINT8, BASE_HEX, VALS(homeplug_av_host_action_vals), 0x00, NULL, HFILL }
       },
       /* Embedded Host Action Required Reponse */
       { &hf_homeplug_av_host_action_rsp,
         { "Embedded Host Action Required Response", "homeplug_av.host_action_rsp",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_host_action_rsp_sts,
         { "Status", "homeplug_av.host_action_rsp.status",
-	  FT_UINT8, BASE_HEX, VALS(homeplug_av_generic_status_vals), HOMEPLUG_AV_GEN_STATUS_MASK, "Unknown", HFILL }
+          FT_UINT8, BASE_HEX, VALS(homeplug_av_generic_status_vals), HOMEPLUG_AV_GEN_STATUS_MASK, "Unknown", HFILL }
       },
       /* Get Device Attributes Request */
       { &hf_homeplug_av_op_attr_req,
         { "Get Device Attributes Request", "homeplug_av.op_attr_req",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_op_attr_cookie,
         { "Cookie", "homeplug_av.op_attr.cookie",
-	  FT_UINT32, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT32, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_op_attr_rep_type,
         { "Report Type", "homeplug_av.op_attr.rep_type",
-	  FT_UINT8, BASE_HEX, VALS(homeplug_av_op_attr_report_vals), 0x00, NULL, HFILL }
+          FT_UINT8, BASE_HEX, VALS(homeplug_av_op_attr_report_vals), 0x00, NULL, HFILL }
       },
       /* Get Device Attributes Confirmation */
       { &hf_homeplug_av_op_attr_cnf,
         { "Get Device Attributes Confirmation", "homeplug_av.op_attr_cnf",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_op_attr_cnf_status,
         { "Status", "homeplug_av.op_attr_cnf.status",
-	  FT_UINT16, BASE_HEX, VALS(homeplug_av_generic_status_vals), HOMEPLUG_AV_GEN_STATUS_MASK, NULL, HFILL }
+          FT_UINT16, BASE_HEX, VALS(homeplug_av_generic_status_vals), HOMEPLUG_AV_GEN_STATUS_MASK, NULL, HFILL }
       },
       { &hf_homeplug_av_op_attr_cnf_size,
         { "Size", "homeplug_av.op_attr_cnf.size",
-	  FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_op_attr_cnf_data,
         { "Data", "homeplug_av.op_attr_cnf.data",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       /* Device Attributes binary report */
       { &hf_homeplug_av_op_attr_data_hw,
         { "Hardware platform", "homeplug_av.op_attr_cnf.data.hw",
-	  FT_STRING, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_STRING, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_op_attr_data_sw,
         { "Software platform", "homeplug_av.op_attr_cnf.data.sw",
-	  FT_STRING, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_STRING, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_op_attr_data_sw_major,
         { "Major version", "homeplug_av.op_attr_cnf.data.sw_major",
-	  FT_UINT32, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT32, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_op_attr_data_sw_minor,
         { "Minor version", "homeplug_av.op_attr_cnf.data.sw_minor",
-	  FT_UINT32, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT32, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_op_attr_data_sw_sub,
         { "Software/PIB version", "homeplug_av.op_attr_cnf.data.sw_sub",
-	  FT_UINT32, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT32, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_op_attr_data_sw_num,
         { "Software build number", "homeplug_av.op_attr_cnf.data.sw_sub",
-	  FT_UINT32, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT32, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_op_attr_data_sw_date,
         { "Build date", "homeplug_av.op_attr_cnf.data.sw_date",
-	  FT_STRING, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_STRING, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_op_attr_data_sw_rel,
         { "Release type", "homeplug_av.op_attr_cnf.data.sw_rel",
-	  FT_STRING, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_STRING, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       /* Get Ethernet PHY Settings Request */
       { &hf_homeplug_av_enet_phy_req,
         { "Get Ethernet PHY Settings Request", "homeplug_av.enet_phy_req",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_enet_phy_req_mcontrol,
         { "Message Control", "homeplug_av.enet_phy_req.mcontrol",
-	  FT_UINT8, BASE_DEC, VALS(homeplug_av_enet_phy_mcontrol_vals), HOMEPLUG_AV_ENET_PHY_MCONTROL_MASK, "Unknown", HFILL }
+          FT_UINT8, BASE_DEC, VALS(homeplug_av_enet_phy_mcontrol_vals), HOMEPLUG_AV_ENET_PHY_MCONTROL_MASK, "Unknown", HFILL }
       },
       { &hf_homeplug_av_enet_phy_req_addcaps,
         { "Advertisement Capabilities", "homeplug_av.enet_phy_req.addcaps",
-	  FT_UINT8, BASE_HEX, NULL, 0x00, NULL, HFILL }
+          FT_UINT8, BASE_HEX, NULL, 0x00, NULL, HFILL }
       },
       /* Get Ethernet PHY Settings Confirmation */
       { &hf_homeplug_av_enet_phy_cnf,
         { "Get Ethernet PHY Settings Confirmation", "homeplug_av.enet_phy_cnf",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_enet_phy_cnf_status,
         { "Status", "homeplug_av.enet_phy_cnf.status",
-	  FT_UINT8, BASE_DEC, VALS(homeplug_av_generic_status_vals), HOMEPLUG_AV_GEN_STATUS_MASK, NULL, HFILL }
+          FT_UINT8, BASE_DEC, VALS(homeplug_av_generic_status_vals), HOMEPLUG_AV_GEN_STATUS_MASK, NULL, HFILL }
       },
       { &hf_homeplug_av_enet_phy_cnf_speed,
         { "Speed", "homeplug_av.enet_phy.speed",
-	  FT_UINT8, BASE_DEC, VALS(homeplug_av_enet_phy_speed_vals), HOMEPLUG_AV_ENET_PHY_SPEED_MASK, "Unknown", HFILL },
+          FT_UINT8, BASE_DEC, VALS(homeplug_av_enet_phy_speed_vals), HOMEPLUG_AV_ENET_PHY_SPEED_MASK, "Unknown", HFILL },
       },
       { &hf_homeplug_av_enet_phy_cnf_duplex,
         { "Duplex", "homeplug_av.enet_phy.duplex",
-	  FT_UINT8, BASE_DEC, VALS(homeplug_av_enet_phy_duplex_vals), HOMEPLUG_AV_ENET_PHY_DUPLEX_MASK, "Unknown", HFILL },
+          FT_UINT8, BASE_DEC, VALS(homeplug_av_enet_phy_duplex_vals), HOMEPLUG_AV_ENET_PHY_DUPLEX_MASK, "Unknown", HFILL },
       },
       /* Tone Map Characteristics Request */
       { &hf_homeplug_av_tone_map_req,
         { "Tone Map Characteristics Request", "homeplug_av.tone_map_req",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_tone_map_req_mac,
         { "Peer address", "homeplug_av.tone_map_req.mac",
-	  FT_ETHER, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_ETHER, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_tone_map_req_slot,
         { "Tone Map slot", "homeplug_av.tone_map_req.slot",
-	  FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       /* Tone Map Characteristics Confirmation */
       { &hf_homeplug_av_tone_map_cnf,
         { "Tone Map Characteristics Confirmation", "homeplug_av.tone_map_cnf",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_tone_map_cnf_status,
         { "Status", "homeplug_av.tone_map_cnf.status",
-	  FT_UINT8, BASE_HEX, VALS(homeplug_av_tone_map_status_vals), HOMEPLUG_AV_TONE_MAP_STATUS_MASK, NULL, HFILL }
+          FT_UINT8, BASE_HEX, VALS(homeplug_av_tone_map_status_vals), HOMEPLUG_AV_TONE_MAP_STATUS_MASK, NULL, HFILL }
       },
       { &hf_homeplug_av_tone_map_cnf_slot,
         { "Slot", "homeplug_av.tone_map_cnf.slot",
-	  FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_tone_map_cnf_num_tms,
         { "Number of Tone Maps in use", "homeplug_av.tone_map_cnf.num_tms",
-	  FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT8, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_tone_map_cnf_num_act,
         { "Tone map number of active carriers", "homeplug_av.tone_map_cnf.num_act",
-	  FT_UINT16, BASE_DEC, NULL, 0x00, NULL, HFILL }
+          FT_UINT16, BASE_DEC, NULL, 0x00, NULL, HFILL }
       },
       /* Tone Map Carrier informations */
       { &hf_homeplug_av_tone_map_carrier,
         { "Modulation per carrier", "homeplug_av.tone_map_cnf.carrier",
-	  FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
+          FT_NONE, BASE_NONE, NULL, 0x00, NULL, HFILL }
       },
       { &hf_homeplug_av_tone_map_carrier_lo,
         { "Modulation (Low carrier)", "homeplug_av.tone_map_cnf.carrier.lo",
-	  FT_UINT8, BASE_HEX, VALS(homeplug_av_tone_map_vals), HOMEPLUG_AV_TONE_MAP_MASK, NULL, HFILL }
+          FT_UINT8, BASE_HEX, VALS(homeplug_av_tone_map_vals), HOMEPLUG_AV_TONE_MAP_MASK, NULL, HFILL }
       },
       { &hf_homeplug_av_tone_map_carrier_hi,
         { "Modulation (High carrier)", "homeplug_av.tone_map_cnf.carrier.hi",
-	  FT_UINT8, BASE_HEX, VALS(homeplug_av_tone_map_vals), HOMEPLUG_AV_TONE_MAP_MASK << 4, NULL, HFILL }
+          FT_UINT8, BASE_HEX, VALS(homeplug_av_tone_map_vals), HOMEPLUG_AV_TONE_MAP_MASK << 4, NULL, HFILL }
       }
    };
 
